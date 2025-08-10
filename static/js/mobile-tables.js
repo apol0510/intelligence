@@ -29,6 +29,13 @@ function initMobileTableSupport() {
             return;
         }
         
+        // 馬番別成績分析の表対応
+        if (table.closest('.data-table') && table.classList.contains('horse-stats-table')) {
+            const wrapper = table.closest('.data-table');
+            addTouchSwipeSupport(wrapper);
+            return;
+        }
+        
         // 表をコンテナでラップ
         if (!table.parentElement.classList.contains('mobile-table-wrapper')) {
             const wrapper = document.createElement('div');

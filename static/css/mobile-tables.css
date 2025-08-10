@@ -113,6 +113,11 @@ main table {
   overflow: visible !important; /* 外側のコンテナはスクロールしない */
 }
 
+/* 馬番別成績分析の表ラッパー対応 */
+.data-table {
+  overflow: visible !important; /* 外側のコンテナはスクロールしない */
+}
+
 .table-scroll-container {
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch !important;
@@ -122,7 +127,22 @@ main table {
 @media (max-width: 768px) {
   .horse-stats-table,
   .urawa-stats-table {
-    min-width: 650px; /* 余裕を持たせる */
+    min-width: 720px; /* 評価列のために幅を拡張 */
+  }
+  
+  /* 馬番別成績分析の表スクロール対応 */
+  .data-table {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: calc(100vw - 6rem) !important; /* 余白を考慮 */
+    margin: 0 !important;
+    padding-right: 1rem !important;
+  }
+  
+  .data-table .horse-stats-table {
+    min-width: 720px !important;
+    width: auto !important;
+    margin: 0 !important;
   }
   
   /* table-scroll-containerの横スクロール強化 */
@@ -131,10 +151,11 @@ main table {
     -webkit-overflow-scrolling: touch !important;
     max-width: calc(100vw - 4rem) !important; /* 余白を考慮 */
     margin: 0 !important;
+    padding-right: 2rem !important; /* 右側の余白を追加 */
   }
   
   .data-table-wrapper .urawa-stats-table {
-    min-width: 650px !important;
+    min-width: 720px !important; /* 評価列のために幅を拡張 */
     width: auto !important;
   }
 }
