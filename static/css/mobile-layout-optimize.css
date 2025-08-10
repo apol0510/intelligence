@@ -251,12 +251,48 @@
   
   /* 関連記事グリッドも最大幅化 */
   .related-grid {
-    gap: 0.5rem !important;
+    gap: 1rem !important;
     margin: 0 !important;
+    grid-template-columns: 1fr !important; /* モバイルでは1列表示で大きく */
   }
   
   .related-card {
     margin: 0 !important;
-    padding: 0.75rem !important;
+    padding: 1.5rem 1rem !important; /* パディングを大きく */
+    min-height: 120px !important; /* 最小高さを設定 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+  
+  .related-card h4 {
+    font-size: 1.1rem !important; /* タイトルを大きく */
+    margin-bottom: 0.75rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  .related-card p {
+    font-size: 0.95rem !important; /* 説明文も少し大きく */
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+  
+  .distance-badge {
+    padding: 0.4rem 0.8rem !important; /* バッジも大きく */
+    font-size: 0.9rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* 関連記事セクションを特に大きく */
+  .related-articles {
+    margin: 2rem -0.75rem 1rem !important;
+    padding: 2rem 0.75rem 1.5rem !important;
+  }
+  
+  .related-articles h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+    color: #1f2937 !important;
   }
 }
