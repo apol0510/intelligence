@@ -22,15 +22,34 @@
     margin: 0 !important;
   }
   
-  /* 見出しの余白を調整 */
+  /* 見出しの余白を調整して幅いっぱいに */
   .article-content h2 {
-    margin: 2rem 0 1rem !important;
+    margin: 2rem -0.75rem 1rem !important; /* 左右を画面端まで拡張 */
     padding: 0.75rem 1rem !important;
   }
   
   .article-content h3 {
-    margin: 1.5rem 0 0.75rem !important;
+    margin: 1.5rem -0.75rem 0.75rem !important; /* 左右を画面端まで拡張 */
     padding: 0.5rem 0.75rem !important;
+  }
+  
+  .article-content h4 {
+    margin: 1rem -0.75rem 0.5rem !important;
+    padding: 0.4rem 0.75rem !important;
+  }
+  
+  /* パラグラフとリストも少し拡張 */
+  .article-content p,
+  .article-content ul,
+  .article-content ol {
+    margin: 1rem -0.25rem !important;
+    padding: 0 0.25rem !important;
+  }
+  
+  /* 重要なポイントセクションを拡張 */
+  .article-content ul li {
+    margin: 0.5rem -0.5rem !important;
+    padding: 0.3rem 0.5rem !important;
   }
   
   /* データ分析コンポーネントの余白最小化 */
@@ -77,6 +96,27 @@
     padding: 1.5rem 0.5rem 1.5rem 1rem !important;
     background: white;
     border-radius: 12px;
+  }
+  
+  /* 浦和記事の特別なセクションを幅いっぱいに */
+  .key-insights,
+  .strategy-tips,
+  .insights-grid {
+    margin: 1rem -0.75rem !important; /* 画面端まで拡張 */
+    padding: 1rem 0.75rem !important;
+  }
+  
+  /* カードグリッドも最大幅化 */
+  .insight-card {
+    margin: 0.5rem 0 !important;
+    padding: 0.75rem !important;
+  }
+  
+  /* 浦和記事のコース特徴セクションも拡張 */
+  .course-features,
+  .analysis-section {
+    margin: 1rem -0.75rem !important;
+    padding: 1rem 0.75rem !important;
   }
   
   /* 表の表示領域を最大化 */
@@ -141,7 +181,8 @@
     padding: 1rem 0.5rem !important;
   }
   
-  .data-table-wrapper {
+  .data-table-wrapper,
+  .popularity-table-wrapper {
     margin: 1rem -0.5rem !important;
     padding: 1rem 0.5rem !important;
   }
@@ -151,6 +192,24 @@
     padding: 0.5rem !important;
     background: none !important;
     box-shadow: none !important;
+  }
+  
+  /* 極小画面でも他のセクションを幅いっぱいに */
+  .article-content h2,
+  .article-content h3,
+  .article-content h4 {
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  .key-insights,
+  .strategy-tips,
+  .course-features,
+  .analysis-section {
+    margin: 1rem -0.5rem !important;
+    padding: 1rem 0.5rem !important;
   }
   
   .chart-container {
@@ -171,5 +230,33 @@
   .horse-stats-table td {
     padding: 0.3rem 0.15rem !important;
     font-size: 0.7rem !important;
+  }
+  
+  /* 記事ナビゲーションやCTAセクションも幅いっぱいに */
+  .article-navigation,
+  .article-cta,
+  .related-articles,
+  .article-tags,
+  .back-to-blog {
+    margin: 1rem -0.5rem !important;
+    padding: 1rem 0.5rem !important;
+  }
+  
+  /* CTAボタンを幅いっぱいに */
+  .cta-button {
+    width: calc(100% - 1rem) !important;
+    max-width: none !important;
+    margin: 0.5rem 0.5rem !important;
+  }
+  
+  /* 関連記事グリッドも最大幅化 */
+  .related-grid {
+    gap: 0.5rem !important;
+    margin: 0 !important;
+  }
+  
+  .related-card {
+    margin: 0 !important;
+    padding: 0.75rem !important;
   }
 }
