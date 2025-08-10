@@ -82,11 +82,14 @@ figcaption {
 
 /* 画像のローディング最適化 */
 img {
-    loading: lazy;
-    decoding: async;
+    /* loading と decoding はHTMLの属性で設定 */
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 /* アスペクト比の維持 */
 img[width][height] {
-    aspect-ratio: attr(width) / attr(height);
+    /* aspect-ratioのattr()関数は未対応のため削除 */
+    height: auto;
+    max-width: 100%;
 }

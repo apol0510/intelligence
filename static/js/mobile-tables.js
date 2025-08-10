@@ -160,8 +160,8 @@ window.addEventListener('resize', function() {
 });
 
 // スムーズスクロールのCSS追加
-const style = document.createElement('style');
-style.textContent = `
+const mobileTableStyle = document.createElement('style');
+mobileTableStyle.textContent = `
     .mobile-table-wrapper {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -205,4 +205,4 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(mobileTableStyle);

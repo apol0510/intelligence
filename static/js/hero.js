@@ -137,8 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-const style = document.createElement('style');
-style.textContent = `
+const heroStyle = document.createElement('style');
+heroStyle.textContent = `
   .char-animate {
     display: inline-block;
     opacity: 0;
@@ -151,4 +151,4 @@ style.textContent = `
     }
   }
 `;
-document.head.appendChild(style);
+document.head.appendChild(heroStyle);

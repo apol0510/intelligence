@@ -2493,6 +2493,9 @@ footer {
     object-fit: cover; /* 元のcoverに戻して画像を適切にトリミング */
     object-position: center;
     transition: transform 0.3s ease;
+    display: block !important; /* 強制的に表示 */
+    visibility: visible !important; /* 可視性を強制 */
+    opacity: 1 !important; /* 透明度を100%に */
 }
 
 .blog-card:hover .blog-card-image img {
