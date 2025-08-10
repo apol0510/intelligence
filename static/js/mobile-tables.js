@@ -36,6 +36,18 @@ function initMobileTableSupport() {
             return;
         }
         
+        // 人気別成績分析の表対応
+        if (table.closest('.popularity-table-wrapper')) {
+            const scrollContainer = table.closest('.table-scroll-container');
+            if (scrollContainer) {
+                addTouchSwipeSupport(scrollContainer);
+            } else {
+                const wrapper = table.closest('.popularity-table-wrapper');
+                addTouchSwipeSupport(wrapper);
+            }
+            return;
+        }
+        
         // 表をコンテナでラップ
         if (!table.parentElement.classList.contains('mobile-table-wrapper')) {
             const wrapper = document.createElement('div');
