@@ -543,7 +543,11 @@ window.addEventListener('load', function() {
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: data.map(h => h.number + '番'),
+        labels: data.map(h => {
+        // 丸数字に変換（16種類まで対応）
+        const circleNumbers = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '⑪', '⑫', '⑬', '⑭', '⑮', '⑯'];
+        return circleNumbers[h.number - 1] || h.number + '番';
+      }),
         datasets: [{
           label: '勝率',
           data: data.map(h => h.winRate),
@@ -680,12 +684,12 @@ window.addEventListener('load', function() {
                 return value + '%';
               },
               font: {
-                size: 12,
+                size: window.innerWidth <= 768 ? 8 : 10, /* モバイルでさらに小さく */
                 weight: '500',
                 family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
               },
               color: '#6b7280',
-              padding: 8
+              padding: window.innerWidth <= 768 ? 3 : 6 /* パディングも縮小 */
             },
             title: {
               display: false /* Y軸ラベルを非表示にしてグラフ領域を拡大 */
@@ -697,7 +701,7 @@ window.addEventListener('load', function() {
             },
             ticks: {
               font: {
-                size: 13,
+                size: window.innerWidth <= 768 ? 16 : 18, /* 丸数字のため少し大きめに */
                 weight: '600',
                 family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
               },

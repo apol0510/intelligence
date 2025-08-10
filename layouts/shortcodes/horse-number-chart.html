@@ -255,7 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: processedData.map(h => h.number + '番'),
+      labels: processedData.map(h => {
+        // 丸数字に変換（16種類まで対応）
+        const circleNumbers = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '⑪', '⑫', '⑬', '⑭', '⑮', '⑯'];
+        return circleNumbers[h.number - 1] || h.number + '番';
+      }),
       datasets: [
         {
           label: '勝率',
@@ -319,6 +323,9 @@ document.addEventListener('DOMContentLoaded', function() {
           ticks: {
             callback: function(value) {
               return value + '%';
+            },
+            font: {
+              size: window.innerWidth <= 640 ? 8 : 10 /* Y軸の%数値を小さく */
             }
           },
           grid: {
@@ -331,6 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
         x: {
           grid: {
             display: false
+          },
+          ticks: {
+            font: {
+              size: window.innerWidth <= 640 ? 14 : 16 /* 丸数字のため少し大きめに */
+            }
           },
           title: {
             display: false /* X軸ラベルも削除してグラフ領域を最大化 */
