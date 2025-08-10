@@ -56,20 +56,22 @@
   
   <div class="data-table-wrapper">
     <h4>📋 詳細データ</h4>
-    <table class="urawa-stats-table">
-      <thead>
-        <tr>
-          <th>馬番</th>
-          <th>勝率</th>
-          <th>連対率</th>
-          <th>3着内率</th>
-          <th>出走数</th>
-          <th>評価</th>
-        </tr>
-      </thead>
-      <tbody id="urawaTable">
-      </tbody>
-    </table>
+    <div class="table-scroll-container">
+      <table class="urawa-stats-table">
+        <thead>
+          <tr>
+            <th>馬番</th>
+            <th>勝率</th>
+            <th>連対率</th>
+            <th>3着内率</th>
+            <th>出走数</th>
+            <th>評価</th>
+          </tr>
+        </thead>
+        <tbody id="urawaTable">
+        </tbody>
+      </table>
+    </div>
   </div>
   
   <div class="strategy-tips">
@@ -378,14 +380,22 @@
   
   .data-table-wrapper {
     margin: 0 1rem 1rem;
+    padding: 1.5rem 0 1.5rem 1.5rem; /* 右側のpaddingを削除 */
+    background: white;
+    border-radius: 12px;
+  }
+  
+  /* 表専用のスクロールコンテナを作成 */
+  .data-table-wrapper .table-scroll-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 1rem;
+    margin: 0;
+    padding-right: 1.5rem; /* 右側の余白を確保 */
   }
   
   /* 表の横スクロール対応 */
   .urawa-stats-table {
-    min-width: 600px;
+    min-width: 650px; /* 少し大きくして余裕を持たせる */
     width: auto;
     margin: 0;
     display: table;
@@ -399,22 +409,22 @@
   }
   
   /* スクロールバーのスタイル */
-  .data-table-wrapper::-webkit-scrollbar {
+  .data-table-wrapper .table-scroll-container::-webkit-scrollbar {
     height: 8px;
   }
   
-  .data-table-wrapper::-webkit-scrollbar-track {
+  .data-table-wrapper .table-scroll-container::-webkit-scrollbar-track {
     background: #f1f5f9;
     border-radius: 4px;
   }
   
-  .data-table-wrapper::-webkit-scrollbar-thumb {
+  .data-table-wrapper .table-scroll-container::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     border-radius: 4px;
   }
   
   /* スクロールヒント */
-  .data-table-wrapper::after {
+  .data-table-wrapper .table-scroll-container::after {
     content: "← スワイプして全体を表示 →";
     display: block;
     text-align: center;

@@ -17,9 +17,15 @@ function initMobileTableSupport() {
     tables.forEach(table => {
         // 既に専用のラッパーがある場合はスキップ
         if (table.closest('.data-table-wrapper') && table.classList.contains('urawa-stats-table')) {
-            // data-table-wrapperに直接スクロール機能を追加
-            const wrapper = table.closest('.data-table-wrapper');
-            addTouchSwipeSupport(wrapper);
+            // table-scroll-containerに直接スクロール機能を追加
+            const scrollContainer = table.closest('.table-scroll-container');
+            if (scrollContainer) {
+                addTouchSwipeSupport(scrollContainer);
+            } else {
+                // 古い構造の場合はdata-table-wrapperを使用
+                const wrapper = table.closest('.data-table-wrapper');
+                addTouchSwipeSupport(wrapper);
+            }
             return;
         }
         

@@ -110,25 +110,31 @@ main table {
 
 /* 浦和記事の特別な表ラッパー対応 */
 .data-table-wrapper {
+  overflow: visible !important; /* 外側のコンテナはスクロールしない */
+}
+
+.table-scroll-container {
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch !important;
+  max-width: 100% !important;
 }
 
 @media (max-width: 768px) {
   .horse-stats-table,
   .urawa-stats-table {
-    min-width: 600px;
+    min-width: 650px; /* 余裕を持たせる */
   }
   
-  /* data-table-wrapperの横スクロール強化 */
-  .data-table-wrapper {
+  /* table-scroll-containerの横スクロール強化 */
+  .table-scroll-container {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    max-width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 4rem) !important; /* 余白を考慮 */
+    margin: 0 !important;
   }
   
   .data-table-wrapper .urawa-stats-table {
-    min-width: 600px !important;
+    min-width: 650px !important;
     width: auto !important;
   }
 }
