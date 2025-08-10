@@ -1,0 +1,184 @@
+/* モバイルテーブル専用スタイル - 改善版 */
+
+/* 全ての表に対する基本設定 */
+.article-content table,
+.article-body table,
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 表のコンテナ - 横スクロール対応 */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  /* 記事コンテンツ全体に横スクロールを許可 */
+  .article-content {
+    overflow-x: visible;
+    width: 100%;
+  }
+  
+  /* 表を横スクロール可能なコンテナでラップ */
+  .article-content table,
+  .article-body table,
+  main table {
+    min-width: 600px; /* 最小幅を確保 */
+    width: auto;
+    display: table; /* tableとして表示 */
+    margin: 1rem 0;
+    font-size: 0.85rem;
+  }
+  
+  /* 表のヘッダー */
+  .article-content table th,
+  .article-body table th,
+  main table th {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.8rem;
+    white-space: nowrap; /* テキストの改行を防ぐ */
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    text-align: center;
+  }
+  
+  /* 表のセル */
+  .article-content table td,
+  .article-body table td,
+  main table td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.8rem;
+    white-space: nowrap; /* テキストの改行を防ぐ */
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  /* 横スクロールのヒント */
+  .article-content table::after,
+  .article-body table::after,
+  main table::after {
+    content: "← 左右にスワイプして全体を表示 →";
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    padding: 0.5rem;
+    background: #f9fafb;
+    margin-top: 0;
+    border-top: 1px solid #e5e7eb;
+    font-style: italic;
+  }
+}
+
+/* 極小画面対応 */
+@media (max-width: 480px) {
+  .article-content table,
+  .article-body table,
+  main table {
+    min-width: 500px;
+    font-size: 0.75rem;
+  }
+  
+  .article-content table th,
+  .article-content table td,
+  .article-body table th,
+  .article-body table td,
+  main table th,
+  main table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* 特定の表のスタイル改善 */
+.horse-stats-table,
+.urawa-stats-table {
+  min-width: 700px;
+}
+
+@media (max-width: 768px) {
+  .horse-stats-table,
+  .urawa-stats-table {
+    min-width: 600px;
+  }
+}
+
+/* スクロールバーのスタイリング */
+@media (max-width: 768px) {
+  .article-content::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .article-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+  
+  .article-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 4px;
+  }
+  
+  .article-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  }
+}
+
+/* タッチデバイス用の改善 */
+@media (hover: none) and (pointer: coarse) {
+  .article-content table,
+  .article-body table,
+  main table {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+  }
+  
+  /* タッチ時の視覚的フィードバック */
+  .article-content table tbody tr:active,
+  .article-body table tbody tr:active,
+  main table tbody tr:active {
+    background: rgba(99, 102, 241, 0.1);
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+  }
+}
+
+/* 表の外側にスクロールインジケーターを追加 */
+.table-scroll-indicator {
+  display: none;
+  text-align: center;
+  padding: 0.5rem;
+  background: linear-gradient(135deg, #e0f2fe, #b3e5fc);
+  color: #0277bd;
+  font-size: 0.8rem;
+  margin: -0.5rem 0 1rem 0;
+  border-radius: 0 0 8px 8px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .table-scroll-indicator {
+    display: block;
+  }
+}
+
+/* ホバー効果をモバイルで無効化 */
+@media (max-width: 768px) {
+  .article-content table tbody tr:hover,
+  .article-body table tbody tr:hover,
+  main table tbody tr:hover {
+    background: transparent;
+  }
+}
