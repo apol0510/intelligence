@@ -2,10 +2,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Image debug script loaded');
     
+    // すべてのブログカードを確認
+    const blogCards = document.querySelectorAll('.blog-card');
+    console.log(`Found ${blogCards.length} blog cards:`);
+    
+    blogCards.forEach((card, index) => {
+        const title = card.querySelector('.blog-card-title a')?.textContent || 'No title';
+        const imageContainer = card.querySelector('.blog-card-image');
+        const images = card.querySelectorAll('.blog-card-image img');
+        console.log(`  Card ${index + 1}: "${title}" - ${images.length} images, has image container: ${!!imageContainer}`);
+        
+        if (images.length > 0) {
+            images.forEach((img, imgIndex) => {
+                console.log(`    Image ${imgIndex + 1}: src="${img.getAttribute('src')}", actual src="${img.src}"`);
+            });
+        }
+    });
+    
     // すべてのブログカード画像を監視
     const blogImages = document.querySelectorAll('.blog-card-image img');
     
-    console.log(`Found ${blogImages.length} blog card images`);
+    console.log(`Total blog card images found: ${blogImages.length}`);
     
     blogImages.forEach((img, index) => {
         console.log(`Image ${index + 1}:`);

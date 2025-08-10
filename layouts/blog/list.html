@@ -12,11 +12,12 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     {{ if and .Params.image (ne .Params.image "") (ne .Params.image nil) }}
+                    <!-- Image for {{ .Title }}: {{ .Params.image }} -> {{ .Params.image | absURL }} -->
                     <div class="blog-card-image">
                         <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" loading="lazy">
                     </div>
                     {{ else }}
-                    <!-- No image for {{ .Title }} -->
+                    <!-- No image for {{ .Title }} - Params.image: {{ .Params.image }} -->
                     {{ end }}
                     <div class="blog-card-meta">
                         <time class="blog-date">{{ .Date.Format "2006年1月2日" }}</time>
