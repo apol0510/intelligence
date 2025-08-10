@@ -8,7 +8,23 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(`Found ${blogImages.length} blog card images`);
     
     blogImages.forEach((img, index) => {
-        console.log(`Image ${index + 1}: ${img.src}`);
+        console.log(`Image ${index + 1}:`);
+        console.log(`  Original src attribute: ${img.getAttribute('src')}`);
+        console.log(`  Current img.src: ${img.src}`);
+        console.log(`  Base URI: ${img.baseURI}`);
+        
+        // undefinedパスの画像を削除
+        const originalSrc = img.getAttribute('src');
+        if (img.src.includes('/blog/undefined') || originalSrc === 'undefined' || originalSrc === null || originalSrc === '') {
+            console.log(`  Removing undefined image element`);
+            const imageContainer = img.closest('.blog-card-image');
+            if (imageContainer) {
+                imageContainer.remove();
+            } else {
+                img.remove();
+            }
+            return; // この画像の処理を終了
+        }
         
         // 強制的にスタイルを適用
         img.style.display = 'block !important';

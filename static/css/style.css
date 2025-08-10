@@ -2496,6 +2496,8 @@ footer {
     display: block !important; /* 強制的に表示 */
     visibility: visible !important; /* 可視性を強制 */
     opacity: 1 !important; /* 透明度を100%に */
+    max-width: none !important; /* max-widthの制限を削除 */
+    min-height: 200px !important; /* 最小高さを確保 */
 }
 
 .blog-card:hover .blog-card-image img {
