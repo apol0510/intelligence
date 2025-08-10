@@ -6,7 +6,7 @@ date: 2025-08-04
 author: "アサイトシヒロ"
 categories: ["コース攻略", "浦和競馬"]
 tags: ["800m", "短距離", "スプリント", "浦和", "データ分析"]
-image: "/img/urawa-800m.jpg"
+image: "/img/urawa_800m.png"
 readingTime: "5～9分"
 type: "blog"
 layout: "single"
