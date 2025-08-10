@@ -45,11 +45,17 @@
   /* グラフコンテナのカード表示をやめてフラットに */
   .chart-container {
     background: none !important; /* 白背景を削除 */
-    padding: 0.5rem 0 !important; /* パディングを最小化 */
-    margin: 0.5rem 0 !important;
+    padding: 0.25rem 0 !important; /* パディングをさらに最小化 */
+    margin: 0.25rem 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    height: 400px !important;
+    height: 420px !important; /* 高さを少し増やしてY軸ラベル削除の分を補填 */
+  }
+  
+  /* グラフ自体のマージンを最小化 */
+  .chart-container canvas {
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* グラフタイトルを直接表示 */
