@@ -299,13 +299,13 @@
   /* ブログカードの画像表示をモバイルで最適化 */
   .blog-card-image {
     height: 180px !important; /* モバイルでは少し低く */
-    background: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
+    background: #f3f4f6 !important;
+    border: none !important;
   }
   
   .blog-card-image img {
-    object-fit: contain !important;
-    padding: 0.5rem !important; /* 少し余白を設けて表示 */
+    object-fit: cover !important; /* モバイルでもcoverを使用 */
+    padding: 0 !important; /* パディングを削除 */
   }
   
   /* ブログカード全体を幅いっぱいに */
