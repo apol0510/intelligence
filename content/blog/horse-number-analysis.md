@@ -1,5 +1,6 @@
 ---
 title: "馬番別成績分析でみる有利な枠順"
+slug: "horse-number-analysis"
 date: 2025-08-10T14:00:00+09:00
 draft: false
 description: "南関東競馬における馬番別の成績をデータ分析。どの枠順が有利なのか、グラフと表で詳しく解説します。"

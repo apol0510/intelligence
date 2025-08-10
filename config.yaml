@@ -52,3 +52,7 @@ outputs:
 
 permalinks:
   blog: '/blog/:slug/'
+
+# URL正規化設定
+disablePathToLower: false
+removePathAccents: true
