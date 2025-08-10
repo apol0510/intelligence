@@ -358,11 +358,29 @@
 }
 
 @media (max-width: 768px) {
-  /* モバイルでグラフコンテナの高さを増加 */
+  /* モバイルでグラフコンテナの高さを増加＆カード表示をやめる */
   .chart-container {
     height: 450px !important;
-    padding: 1rem !important;
-    margin: 1rem !important;
+    padding: 0.5rem 0 !important; /* パディングを最小化 */
+    margin: 0.5rem 0 !important;
+    background: none !important; /* 白背景を削除 */
+    box-shadow: none !important; /* シャドウを削除 */
+    border-radius: 0 !important; /* 角丸を削除 */
+  }
+  
+  /* 浦和記事全体のカード表示をモバイルでやめる */
+  .horse-number-analysis.urawa-special {
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 1rem -0.75rem !important;
+    padding: 0.5rem !important;
+  }
+  
+  .chart-header-special {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    margin: 0 -0.75rem 1rem !important; /* 画面端まで拡張 */
+    border-radius: 0 !important;
   }
   
   .chart-header-special {

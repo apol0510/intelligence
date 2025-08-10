@@ -37,6 +37,32 @@
   .horse-number-analysis {
     margin: 1rem -0.75rem !important; /* 親の余白を打ち消して画面端まで使用 */
     padding: 1rem 0.75rem !important;
+    background: none !important; /* カード背景を削除 */
+    box-shadow: none !important; /* シャドウを削除 */
+    border-radius: 0 !important; /* 角丸を削除 */
+  }
+  
+  /* グラフコンテナのカード表示をやめてフラットに */
+  .chart-container {
+    background: none !important; /* 白背景を削除 */
+    padding: 0.5rem 0 !important; /* パディングを最小化 */
+    margin: 0.5rem 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    height: 400px !important;
+  }
+  
+  /* グラフタイトルを直接表示 */
+  .chart-stats {
+    padding: 0 !important;
+    margin: 0.5rem 0 !important;
+  }
+  
+  .chart-stats h3 {
+    background: none !important;
+    color: #1f2937 !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
   }
   
   .data-table-wrapper {
@@ -106,10 +132,23 @@
     padding: 1rem 0.5rem !important;
   }
   
-  .data-table-wrapper,
-  .horse-number-analysis {
+  .data-table-wrapper {
     margin: 1rem -0.5rem !important;
     padding: 1rem 0.5rem !important;
+  }
+  
+  .horse-number-analysis {
+    margin: 1rem -0.5rem !important;
+    padding: 0.5rem !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  
+  .chart-container {
+    background: none !important;
+    padding: 0.25rem 0 !important;
+    margin: 0.25rem 0 !important;
+    height: 350px !important;
   }
   
   .table-scroll-container,
