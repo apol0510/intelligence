@@ -295,4 +295,22 @@
     text-align: center !important;
     color: #1f2937 !important;
   }
+  
+  /* ブログカードの画像表示をモバイルで最適化 */
+  .blog-card-image {
+    height: 180px !important; /* モバイルでは少し低く */
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+  
+  .blog-card-image img {
+    object-fit: contain !important;
+    padding: 0.5rem !important; /* 少し余白を設けて表示 */
+  }
+  
+  /* ブログカード全体を幅いっぱいに */
+  .blog-card {
+    margin: 0 -0.75rem 2rem !important;
+    padding: 1.5rem 0.75rem !important;
+  }
 }
