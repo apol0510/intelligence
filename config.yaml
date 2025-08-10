@@ -1,0 +1,51 @@
+baseURL: 'https://nankan-intelligence.netlify.app/'
+languageCode: 'ja'
+title: 'NANKAN Intelligence | 南関競馬AI予想'
+defaultContentLanguage: 'ja'
+
+params:
+  author: 'アサイトシヒロ'
+  description: 'AI・機械学習による南関競馬予想。的中率76.4%、回収率158%の実績。大井・船橋・浦和・川崎の全レース分析をお届け。'
+  keywords: 'AI予想,南関競馬,馬券予想,競馬分析,機械学習,データサイエンス'
+  
+  # OGP settings
+  ogTitle: '8月10日大井競馬予想 - ランプロン本命 | NANKAN Intelligence'
+  ogDescription: '2025年8月10日大井競馬のAI予想。本命◎1番ランプロン、対抗○7番ゴールドジャッジ。絶好枠からの逃げ切りに期待。'
+  ogImage: '/ogp-image.svg'
+  
+  # Social links
+  twitter: 'https://twitter.com/keiba_haishinjo'
+  newsletter: 'https://a16.hm-f.jp/index.php'
+  prediction: 'https://apolon.keibanahibi.com/index.php?nankanyosou'
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+      
+menu:
+  main:
+    - name: 'ホーム'
+      url: '/'
+      weight: 1
+    - name: '今日の予想'
+      url: '#predictions'
+      weight: 2
+    - name: '的中実績'
+      url: '#results'
+      weight: 3
+    - name: 'ブログ'
+      url: '/blog'
+      weight: 4
+    - name: '運営者情報'
+      url: '#profile'
+      weight: 5
+    - name: '無料予想'
+      url: 'https://apolon.keibanahibi.com/index.php?nankanyosou'
+      weight: 6
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

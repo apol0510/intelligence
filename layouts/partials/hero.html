@@ -1,0 +1,109 @@
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="title-main">地方競馬インテリジェンス</span>
+        <span class="title-sub">データドリブンな競馬予想と分析</span>
+      </h1>
+      <p class="hero-description">
+        南関東4場の最新情報・レース分析・コース攻略を網羅。<br>
+        AI分析と独自データで、あなたの競馬予想をサポートします。
+      </p>
+      
+      <div class="category-navigation">
+        <button class="category-btn active" data-category="all">
+          <span class="category-icon">🏇</span>
+          <span class="category-name">すべて</span>
+          <span class="category-count">{{ len (where .Site.RegularPages "Section" "blog") }}</span>
+        </button>
+        
+        <button class="category-btn" data-category="ooi">
+          <span class="category-icon">🌊</span>
+          <span class="category-name">大井競馬</span>
+          <span class="category-count">0</span>
+        </button>
+        
+        <button class="category-btn" data-category="funabashi">
+          <span class="category-icon">⚓</span>
+          <span class="category-name">船橋競馬</span>
+          <span class="category-count">0</span>
+        </button>
+        
+        <button class="category-btn" data-category="kawasaki">
+          <span class="category-icon">🏭</span>
+          <span class="category-name">川崎競馬</span>
+          <span class="category-count">0</span>
+        </button>
+        
+        <button class="category-btn" data-category="urawa">
+          <span class="category-icon">🌸</span>
+          <span class="category-name">浦和競馬</span>
+          <span class="category-count">1</span>
+        </button>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">{{ len .Site.RegularPages }}</span>
+          <span class="stat-label">記事数</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label">競馬場</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">365</span>
+          <span class="stat-label">日更新</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="floating-cards">
+        <div class="card card-1">
+          <div class="card-header">本日の注目レース</div>
+          <div class="card-content">
+            <p class="race-name">スパーキングレディーC</p>
+            <p class="race-info">川崎 11R 15:20発走</p>
+          </div>
+        </div>
+        
+        <div class="card card-2">
+          <div class="card-header">AI予想的中率</div>
+          <div class="card-content">
+            <div class="progress-circle">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                <circle cx="50" cy="50" r="45" class="progress-fill" style="stroke-dasharray: 212.058; stroke-dashoffset: 42.412;"></circle>
+              </svg>
+              <span class="progress-text">80%</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card card-3">
+          <div class="card-header">週間アクセスランキング</div>
+          <div class="card-content">
+            <ol class="ranking-list">
+              <li>大井ダート1200m攻略法</li>
+              <li>船橋ナイター必勝パターン</li>
+              <li>川崎スプリント傾向分析</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-decoration">
+        <div class="decoration-circle circle-1"></div>
+        <div class="decoration-circle circle-2"></div>
+        <div class="decoration-circle circle-3"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,40 C480,80 960,0 1440,40 L1440,100 L0,100 Z" fill="var(--bg-color)"></path>
+    </svg>
+  </div>
+</section>

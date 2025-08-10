@@ -1,0 +1,109 @@
+/* コース図画像のスタイリング */
+.course-diagram, .course-detail {
+  margin: 2rem auto !important;
+  text-align: center !important;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(99, 102, 241, 0.1) !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.course-diagram img, .course-detail img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.course-diagram img:hover, .course-detail img:hover {
+  transform: scale(1.02);
+}
+
+.course-diagram .image-caption, .course-detail .image-caption {
+  margin-top: 1rem !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.9rem !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  display: block !important;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .course-diagram, .course-detail {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .course-diagram .image-caption, .course-detail .image-caption {
+    font-size: 0.85rem;
+  }
+}
+
+/* 構造化データ対応 */
+.course-diagram, .course-detail {
+  position: relative !important;
+}
+
+.course-diagram::before, .course-detail::before {
+  content: "📍" !important;
+  position: absolute !important;
+  top: 1.5rem !important;
+  left: 1.5rem !important;
+  font-size: 1.2rem !important;
+  background: rgba(99, 102, 241, 0.9) !important;
+  color: white !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  z-index: 2 !important;
+  border: 2px solid white !important;
+}
+
+/* 印刷対応 */
+@media print {
+  .course-diagram, .course-detail {
+    break-inside: avoid;
+    background: white;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* アクセシビリティ */
+.course-diagram img, .course-detail img {
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.course-diagram img:focus, .course-detail img:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-color: #6366f1;
+}
+
+/* 高解像度ディスプレイ対応 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .course-diagram img, .course-detail img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

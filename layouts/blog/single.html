@@ -1,0 +1,243 @@
+{{ define "main" }}
+<!-- 記事ヒーローセクション -->
+<section class="article-hero">
+    <div class="article-hero-content">
+        <h1 class="article-title">{{ .Title }}</h1>
+        <div class="article-meta">
+            <span class="article-date">📅 {{ .Date.Format "2006年1月2日" }}</span>
+            <span class="article-author">👤 {{ .Params.author | default .Site.Params.author }}</span>
+            <span class="article-reading-time">⏱️ {{ .Params.readingTime | default "5分で読める" }}</span>
+            {{ range .Params.categories }}
+            <span class="article-category-badge">{{ . }}</span>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- メインコンテンツ -->
+<main class="article-main">
+    <article class="article-body">
+        {{ if .Params.toc }}
+        <!-- 目次 -->
+        <div class="table-of-contents">
+            <details open>
+                <summary>📋 目次</summary>
+                {{ .TableOfContents }}
+            </details>
+        </div>
+        {{ end }}
+
+        <!-- 記事本文 -->
+        <div class="article-content">
+            {{ .Content }}
+        </div>
+
+        <!-- タグ -->
+        {{ if .Params.tags }}
+        <div class="article-tags">
+            <h4>🏷️ タグ</h4>
+            <div class="tags-list">
+                {{ range .Params.tags }}
+                <span class="article-tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- CTA -->
+        <div class="article-cta">
+            <div class="cta-content">
+                <h3>💡 NANKAN IntelligenceのAI予想を実際に体験してみませんか？</h3>
+                <p>本記事の攻略法を活かした実際のAI予想を無料でご提供しています</p>
+                <a href="{{ .Site.Params.prediction }}" target="_blank" class="cta-button">
+                    🎯 無料AI予想を見る
+                </a>
+            </div>
+        </div>
+
+        <!-- 記事ナビゲーション -->
+        <nav class="article-navigation" aria-label="記事ナビゲーション">
+            <div class="nav-links">
+                {{ with .PrevInSection }}
+                <a href="{{ .Permalink }}" class="nav-link prev-link">
+                    <span class="nav-direction">← 前の記事</span>
+                    <span class="nav-title">{{ .Title }}</span>
+                </a>
+                {{ end }}
+                
+                {{ with .NextInSection }}
+                <a href="{{ .Permalink }}" class="nav-link next-link">
+                    <span class="nav-direction">次の記事 →</span>
+                    <span class="nav-title">{{ .Title }}</span>
+                </a>
+                {{ end }}
+            </div>
+        </nav>
+
+        <!-- 関連記事セクション -->
+        <section class="related-articles">
+            <h3>🏇 関連記事</h3>
+            <div class="related-grid">
+                <!-- 他の距離の攻略記事を想定したサンプル -->
+                <div class="related-card">
+                    <div class="distance-badge" style="background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 100%);">1300m</div>
+                    <h4>浦和1300m完全攻略</h4>
+                    <p>短中距離戦の特徴と枠順別成績データ分析</p>
+                </div>
+                
+                <div class="related-card">
+                    <div class="distance-badge" style="background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);">1400m</div>
+                    <h4>浦和1400m完全攻略</h4>
+                    <p>中距離戦の攻略法と脚質別適性分析</p>
+                </div>
+                
+                <div class="related-card">
+                    <div class="distance-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">1500m</div>
+                    <h4>浦和1500m完全攻略</h4>
+                    <p>マイル戦の特性と展開パターン解析</p>
+                </div>
+                
+                <div class="related-card">
+                    <div class="distance-badge" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">2000m</div>
+                    <h4>浦和2000m完全攻略</h4>
+                    <p>長距離戦の特徴とスタミナ評価法</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ブログ一覧に戻るリンク -->
+        <div class="back-to-blog">
+            <a href="/blog/" class="back-link">ブログ一覧に戻る</a>
+        </div>
+    </article>
+</main>
+{{ end }}
+
+{{ define "head" }}
+<!-- Chart.js for data visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// ページ読み込み後にチャートを描画
+document.addEventListener('DOMContentLoaded', function() {
+    // 馬番別勝率チャート
+    const ctx1 = document.getElementById('postPositionChart');
+    if (ctx1) {
+        const data = [
+            { position: '1', winRate: 14.1 },
+            { position: '2', winRate: 5.0 },
+            { position: '3', winRate: 11.3 },
+            { position: '4', winRate: 8.0 },
+            { position: '5', winRate: 12.0 },
+            { position: '6', winRate: 15.3 },
+            { position: '7', winRate: 7.9 },
+            { position: '8', winRate: 9.4 },
+            { position: '9', winRate: 7.8 },
+            { position: '10', winRate: 5.5 },
+            { position: '11', winRate: 5.0 },
+            { position: '12', winRate: 17.1 }
+        ];
+        
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: data.map(d => d.position + '番'),
+                datasets: [{
+                    label: '勝率 (%)',
+                    data: data.map(d => d.winRate),
+                    backgroundColor: data.map(d => {
+                        if (d.winRate >= 15) return 'rgba(245, 158, 11, 0.8)';
+                        if (d.winRate >= 10) return 'rgba(236, 72, 153, 0.8)';
+                        return 'rgba(59, 130, 246, 0.8)';
+                    }),
+                    borderColor: data.map(d => {
+                        if (d.winRate >= 15) return 'rgb(245, 158, 11)';
+                        if (d.winRate >= 10) return 'rgb(236, 72, 153)';
+                        return 'rgb(59, 130, 246)';
+                    }),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 20,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    // 人気別成績チャート
+    const ctx2 = document.getElementById('popularityChart');
+    if (ctx2) {
+        const data = [
+            { popularity: '1番人気', winRate: 48.5, placeRate: 80.6 },
+            { popularity: '2番人気', winRate: 16.5, placeRate: 55.3 },
+            { popularity: '3番人気', winRate: 14.6, placeRate: 49.5 },
+            { popularity: '4番人気', winRate: 9.7, placeRate: 40.8 },
+            { popularity: '5番人気', winRate: 2.9, placeRate: 32.0 },
+            { popularity: '6番人気以下', winRate: 1.5, placeRate: 8.1 }
+        ];
+        
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: data.map(d => d.popularity),
+                datasets: [{
+                    label: '勝率 (%)',
+                    data: data.map(d => d.winRate),
+                    backgroundColor: 'rgba(254, 202, 202, 0.8)',
+                    borderColor: 'rgb(248, 113, 113)',
+                    borderWidth: 2
+                }, {
+                    label: '複勝率 (%)',
+                    data: data.map(d => d.placeRate),
+                    backgroundColor: 'rgba(167, 243, 208, 0.8)',
+                    borderColor: 'rgb(52, 211, 153)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 90,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+{{ end }}

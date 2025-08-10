@@ -1,0 +1,167 @@
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="title-main">南関競馬攻略ブログ</span>
+        <span class="title-sub">データドリブンな競馬予想と分析記事</span>
+      </h1>
+      <p class="hero-description">
+        南関東4場の最新情報・レース分析・コース攻略を網羅。<br>
+        AI分析と独自データで、あなたの競馬予想をサポートします。
+      </p>
+      
+      <div class="category-navigation">
+        <button class="category-btn active" data-category="all">
+          <span class="category-icon">🏇</span>
+          <span class="category-name">すべて</span>
+          <span class="category-count">{{ len .Pages }}</span>
+        </button>
+        
+        <button class="category-btn" data-category="ooi">
+          <span class="category-icon">🌊</span>
+          <span class="category-name">大井競馬</span>
+          <span class="category-count">0</span>
+        </button>
+        
+        <button class="category-btn" data-category="funabashi">
+          <span class="category-icon">⚓</span>
+          <span class="category-name">船橋競馬</span>
+          <span class="category-count">0</span>
+        </button>
+        
+        <button class="category-btn" data-category="kawasaki">
+          <span class="category-icon">🏭</span>
+          <span class="category-name">川崎競馬</span>
+          <span class="category-count">0</span>
+        </button>
+        
+        <button class="category-btn" data-category="urawa">
+          <span class="category-icon">🌸</span>
+          <span class="category-name">浦和競馬</span>
+          <span class="category-count">1</span>
+        </button>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">{{ len .Pages }}</span>
+          <span class="stat-label">記事数</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label">競馬場</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">365</span>
+          <span class="stat-label">日更新</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="floating-cards">
+        <div class="card card-1">
+          <div class="card-header">最新記事</div>
+          <div class="card-content">
+            {{ range first 1 .Pages }}
+            <p class="race-name">{{ .Title }}</p>
+            <p class="race-info">{{ .Date.Format "2006年1月2日" }}</p>
+            {{ else }}
+            <p class="race-name">記事準備中</p>
+            <p class="race-info">まもなく公開</p>
+            {{ end }}
+          </div>
+        </div>
+        
+        <div class="card card-2">
+          <div class="card-header">人気カテゴリー</div>
+          <div class="card-content">
+            <div class="category-stats">
+              <div class="cat-item">
+                <span class="cat-icon">📊</span>
+                <span class="cat-name">データ分析</span>
+              </div>
+              <div class="cat-item">
+                <span class="cat-icon">🏁</span>
+                <span class="cat-name">コース攻略</span>
+              </div>
+              <div class="cat-item">
+                <span class="cat-icon">🤖</span>
+                <span class="cat-name">AI予想</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card card-3">
+          <div class="card-header">注目タグ</div>
+          <div class="card-content">
+            <div class="tag-cloud">
+              <span class="cloud-tag">浦和</span>
+              <span class="cloud-tag">大井</span>
+              <span class="cloud-tag">船橋</span>
+              <span class="cloud-tag">川崎</span>
+              <span class="cloud-tag">データ分析</span>
+              <span class="cloud-tag">短距離</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-decoration">
+        <div class="decoration-circle circle-1"></div>
+        <div class="decoration-circle circle-2"></div>
+        <div class="decoration-circle circle-3"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,40 C480,80 960,0 1440,40 L1440,100 L0,100 Z" fill="var(--bg-color)"></path>
+    </svg>
+  </div>
+</section>
+
+<style>
+.category-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.cat-icon {
+  font-size: 1.2rem;
+}
+
+.cat-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cloud-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4c1d95;
+}
+</style>

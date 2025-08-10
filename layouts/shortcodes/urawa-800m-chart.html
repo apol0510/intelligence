@@ -1,0 +1,653 @@
+{{ $title := .Get "title" | default "浦和800m 馬番別成績分析" }}
+
+<div class="horse-number-analysis urawa-special">
+  <div class="chart-header-special">
+    <div class="header-content">
+      <h3 class="chart-title">🏇 {{ $title }}</h3>
+      <p class="chart-subtitle">極短距離戦の馬番別データ分析</p>
+    </div>
+    <div class="header-badge">
+      <span class="distance-badge">800m</span>
+      <span class="venue-badge">浦和競馬場</span>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <canvas id="urawaChart" width="600" height="400" style="display: block !important; visibility: visible !important;"></canvas>
+  </div>
+  
+  <div class="key-insights">
+    <h4>📊 重要な発見</h4>
+    <div class="insights-grid">
+      <div class="insight-card best">
+        <div class="insight-icon">🥇</div>
+        <div class="insight-content">
+          <span class="insight-label">最高勝率</span>
+          <span class="insight-value">12番 17.1%</span>
+          <span class="insight-note">ジンクスを覆して大外枠が好成績</span>
+        </div>
+      </div>
+      <div class="insight-card good">
+        <div class="insight-icon">🥈</div>
+        <div class="insight-content">
+          <span class="insight-label">準優勢</span>
+          <span class="insight-value">6番 15.3%</span>
+          <span class="insight-note">中外枠も好成績</span>
+        </div>
+      </div>
+      <div class="insight-card stable">
+        <div class="insight-icon">🥉</div>
+        <div class="insight-content">
+          <span class="insight-label">安定枠</span>
+          <span class="insight-value">1番 14.1%</span>
+          <span class="insight-note">内枠も十分有利</span>
+        </div>
+      </div>
+      <div class="insight-card warning">
+        <div class="insight-icon">⚠️</div>
+        <div class="insight-content">
+          <span class="insight-label">要注意</span>
+          <span class="insight-value">2番 5.0%</span>
+          <span class="insight-note">2番枠は苦戦傾向</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="data-table-wrapper">
+    <h4>📋 詳細データ</h4>
+    <table class="urawa-stats-table">
+      <thead>
+        <tr>
+          <th>馬番</th>
+          <th>勝率</th>
+          <th>連対率</th>
+          <th>3着内率</th>
+          <th>出走数</th>
+          <th>評価</th>
+        </tr>
+      </thead>
+      <tbody id="urawaTable">
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="strategy-tips">
+    <h4>💡 攻略のポイント</h4>
+    <ul>
+      <li><strong>12番枠（大外）</strong>：最高勝率17.1%、スタート後の進路確保が容易</li>
+      <li><strong>1番枠（最内）</strong>：14.1%の高勝率、内ラチ沿いの最短距離</li>
+      <li><strong>2番・10番・11番</strong>：勝率5%前後と苦戦、避けるのが無難</li>
+      <li><strong>スタート重視</strong>：800mでは出遅れは致命的、ゲート巧者を狙え</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+.horse-number-analysis.urawa-special {
+  margin: 2rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.chart-header-special {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.chart-title {
+  color: white;
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.chart-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.header-badge {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.distance-badge, .venue-badge {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #1a1a2e;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1.2;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.chart-container {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  padding: 2.5rem;
+  margin: 2rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.chart-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+  border-radius: 20px 20px 0 0;
+}
+
+.key-insights {
+  padding: 0 2rem;
+  color: #1f2937;
+}
+
+.key-insights h4 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.insight-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.insight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.insight-icon {
+  font-size: 2rem;
+}
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-label {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.insight-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.insight-note {
+  display: block;
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.insight-card.best {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 193, 7, 0.3));
+  border-color: rgba(255, 193, 7, 0.8);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+.insight-card.good {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  border-color: rgba(99, 102, 241, 0.6);
+}
+
+.insight-card.stable {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(147, 51, 234, 0.15));
+  border-color: rgba(236, 72, 153, 0.6);
+}
+
+.insight-card.warning {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.15), rgba(239, 68, 68, 0.15));
+  border-color: rgba(248, 113, 113, 0.6);
+}
+
+.data-table-wrapper {
+  background: white;
+  margin: 0 2rem 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.data-table-wrapper h4 {
+  color: #374151;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.urawa-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.urawa-stats-table th {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 2px solid #4f46e5;
+}
+
+.urawa-stats-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.urawa-stats-table tbody tr:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+.evaluation-excellent {
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  color: #713f12;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.evaluation-good {
+  background: linear-gradient(90deg, #e5e5e5, #f5f5f5);
+  color: #4b5563;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.evaluation-average {
+  background: linear-gradient(90deg, #fed7aa, #fdba74);
+  color: #7c2d12;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.evaluation-poor {
+  background: linear-gradient(90deg, #fca5a5, #f87171);
+  color: #7f1d1d;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.strategy-tips {
+  background: rgba(255, 255, 255, 0.95);
+  margin: 0 2rem 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.strategy-tips h4 {
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.strategy-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.strategy-tips li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #fee2e2;
+  color: #374151;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.strategy-tips li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #6366f1;
+  font-weight: bold;
+}
+
+.strategy-tips li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .chart-header-special {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .header-badge {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .distance-badge, .venue-badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .data-table-wrapper {
+    margin: 0 1rem 1rem;
+  }
+  
+  .strategy-tips {
+    margin: 0 1rem 1rem;
+  }
+}
+</style>
+
+<script>
+window.addEventListener('load', function() {
+  // 他のスクリプトの処理を待つ
+  setTimeout(function() {
+  // Chart.js が読み込まれているか確認
+  if (typeof Chart === 'undefined') {
+    console.log('Chart.js not loaded, creating fallback visualization');
+    return;
+  }
+  
+  console.log('Creating urawa chart...');
+  
+  const ctx = document.getElementById('urawaChart');
+  if (!ctx) {
+    console.log('Canvas element not found');
+    return;
+  }
+  
+  // 浦和800mデータ
+  const data = [
+    { number: 1, winRate: 14.1, placeRate: 24.2, showRate: 33.3, runs: 99 },
+    { number: 2, winRate: 5.0, placeRate: 17.0, showRate: 34.0, runs: 100 },
+    { number: 3, winRate: 11.3, placeRate: 27.8, showRate: 38.1, runs: 97 },
+    { number: 4, winRate: 8.0, placeRate: 16.0, showRate: 23.0, runs: 100 },
+    { number: 5, winRate: 12.0, placeRate: 24.0, showRate: 36.0, runs: 100 },
+    { number: 6, winRate: 15.3, placeRate: 21.4, showRate: 28.6, runs: 98 },
+    { number: 7, winRate: 7.9, placeRate: 18.0, showRate: 22.5, runs: 89 },
+    { number: 8, winRate: 9.4, placeRate: 16.5, showRate: 27.1, runs: 85 },
+    { number: 9, winRate: 7.8, placeRate: 14.3, showRate: 26.0, runs: 77 },
+    { number: 10, winRate: 5.5, placeRate: 19.2, showRate: 24.7, runs: 73 },
+    { number: 11, winRate: 5.0, placeRate: 13.3, showRate: 23.3, runs: 60 },
+    { number: 12, winRate: 17.1, placeRate: 22.0, showRate: 34.1, runs: 41 }
+  ];
+  
+  // テーブルにデータを追加
+  const tableBody = document.getElementById('urawaTable');
+  data.forEach(horse => {
+    const row = tableBody.insertRow();
+    let evaluation = '';
+    let evalClass = '';
+    if (horse.winRate >= 15) {
+      evaluation = '最優秀';
+      evalClass = 'evaluation-excellent';
+    } else if (horse.winRate >= 10) {
+      evaluation = '優良';
+      evalClass = 'evaluation-good';
+    } else if (horse.winRate >= 7) {
+      evaluation = '普通';
+      evalClass = 'evaluation-average';
+    } else {
+      evaluation = '要注意';
+      evalClass = 'evaluation-poor';
+    }
+    
+    row.innerHTML = `
+      <td>${horse.number}番</td>
+      <td>${horse.winRate}%</td>
+      <td>${horse.placeRate}%</td>
+      <td>${horse.showRate}%</td>
+      <td>${horse.runs}</td>
+      <td><span class="${evalClass}">${evaluation}</span></td>
+    `;
+  });
+  
+  // グラフを作成
+  try {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.map(h => h.number + '番'),
+        datasets: [{
+          label: '勝率',
+          data: data.map(h => h.winRate),
+          backgroundColor: function(context) {
+            const chart = context.chart;
+            const {ctx, chartArea} = chart;
+            if (!chartArea) return 'rgba(245, 158, 11, 0.8)';
+            
+            const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+            gradient.addColorStop(0, 'rgba(245, 158, 11, 0.3)');
+            gradient.addColorStop(0.5, 'rgba(245, 158, 11, 0.7)');
+            gradient.addColorStop(1, 'rgba(245, 158, 11, 1)');
+            return gradient;
+          },
+          borderColor: 'rgba(245, 158, 11, 1)',
+          borderWidth: 0,
+          borderRadius: 8,
+          borderSkipped: false,
+        }, {
+          label: '連対率',
+          data: data.map(h => h.placeRate),
+          backgroundColor: function(context) {
+            const chart = context.chart;
+            const {ctx, chartArea} = chart;
+            if (!chartArea) return 'rgba(139, 92, 246, 0.8)';
+            
+            const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+            gradient.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+            gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.7)');
+            gradient.addColorStop(1, 'rgba(139, 92, 246, 1)');
+            return gradient;
+          },
+          borderColor: 'rgba(139, 92, 246, 1)',
+          borderWidth: 0,
+          borderRadius: 8,
+          borderSkipped: false,
+        }, {
+          label: '3着内率',
+          data: data.map(h => h.showRate),
+          backgroundColor: function(context) {
+            const chart = context.chart;
+            const {ctx, chartArea} = chart;
+            if (!chartArea) return 'rgba(236, 72, 153, 0.8)';
+            
+            const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+            gradient.addColorStop(0, 'rgba(236, 72, 153, 0.3)');
+            gradient.addColorStop(0.5, 'rgba(236, 72, 153, 0.7)');
+            gradient.addColorStop(1, 'rgba(236, 72, 153, 1)');
+            return gradient;
+          },
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 0,
+          borderRadius: 8,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: '🏇 浦和800m 馬番別成績分析',
+            font: {
+              size: 20,
+              weight: 'bold',
+              family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
+            },
+            color: '#1f2937',
+            padding: {
+              top: 10,
+              bottom: 30
+            }
+          },
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              padding: 25,
+              font: {
+                size: 14,
+                weight: '600',
+                family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
+              },
+              color: '#374151',
+              usePointStyle: true,
+              pointStyle: 'rectRounded'
+            }
+          },
+          tooltip: {
+            enabled: true,
+            backgroundColor: 'rgba(17, 24, 39, 0.95)',
+            titleColor: '#f9fafb',
+            titleFont: {
+              size: 14,
+              weight: 'bold'
+            },
+            bodyColor: '#f3f4f6',
+            bodyFont: {
+              size: 13
+            },
+            cornerRadius: 12,
+            padding: 16,
+            displayColors: true,
+            boxWidth: 8,
+            boxHeight: 8,
+            boxPadding: 8,
+            callbacks: {
+              label: function(context) {
+                return ' ' + context.dataset.label + ': ' + context.parsed.y.toFixed(1) + '%';
+              },
+              afterBody: function(tooltipItems) {
+                const index = tooltipItems[0].dataIndex;
+                const horse = data[index];
+                return [`出走数: ${horse.runs}回`];
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 45,
+            grid: {
+              color: 'rgba(156, 163, 175, 0.2)',
+              lineWidth: 1
+            },
+            ticks: {
+              callback: function(value) {
+                return value + '%';
+              },
+              font: {
+                size: 12,
+                weight: '500',
+                family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
+              },
+              color: '#6b7280',
+              padding: 8
+            },
+            title: {
+              display: true,
+              text: '成績率 (%)',
+              font: {
+                size: 14,
+                weight: '600'
+              },
+              color: '#374151'
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              font: {
+                size: 13,
+                weight: '600',
+                family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
+              },
+              color: '#1f2937',
+              padding: 8
+            },
+            title: {
+              display: true,
+              text: '馬番',
+              font: {
+                size: 14,
+                weight: '600'
+              },
+              color: '#374151'
+            }
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeInOutCubic'
+        },
+        elements: {
+          bar: {
+            borderRadius: 8,
+          }
+        }
+      }
+    });
+    console.log('Chart created successfully!');
+  } catch (error) {
+    console.error('Chart creation failed:', error);
+  }
+  }, 1000); // 1秒待ってから実行
+});
+</script>

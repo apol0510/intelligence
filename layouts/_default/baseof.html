@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="keywords" content="{{ with .Params.keywords }}{{ . }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="ja">
+    <meta name="author" content="{{ .Site.Params.author }}">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="geo.region" content="JP-13">
+    <meta name="geo.placename" content="品川区, 東京都">
+    <meta name="geo.position" content="35.5954;139.7431">
+    <meta name="ICBM" content="35.5954, 139.7431">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="article:modified_time" content="{{ .Lastmod }}">
+    <meta name="last-modified" content="{{ .Lastmod }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="alternate" hreflang="ja" href="{{ .Permalink }}">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ with .Params.ogTitle }}{{ . }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}">
+    <meta property="og:description" content="{{ with .Params.ogDescription }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:image" content="{{ absURL (default .Site.Params.ogImage .Params.ogImage) }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ .Permalink }}">
+    <meta property="twitter:title" content="{{ .Title }}">
+    <meta property="twitter:description" content="{{ .Site.Params.description }}">
+    <meta property="twitter:image" content="{{ absURL .Site.Params.ogImage }}">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/responsive-tables.css">
+    <link rel="stylesheet" href="/css/table-responsive.css">
+    <link rel="stylesheet" href="/css/responsive-images.css">
+    <link rel="stylesheet" href="/css/readable-blog.css">
+    <link rel="stylesheet" href="/css/scroll-to-top.css">
+    <link rel="stylesheet" href="/css/course-images.css">
+    
+    {{ block "head" . }}{{ end }}
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header role="banner">
+        <nav role="navigation" aria-label="メインナビゲーション">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-title">NANKAN Intelligence</div>
+                    <div class="logo-subtitle">南関競馬AI予想</div>
+                </div>
+                <button class="menu-toggle" aria-label="メニューを開閉" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu">
+                    {{ range .Site.Menus.main }}
+                    <li><a href="{{ .URL }}">
+                        <span class="nav-icon">
+                            {{ if eq .Name "ホーム" }}🏠
+                            {{ else if eq .Name "今日の予想" }}🎯
+                            {{ else if eq .Name "的中実績" }}🏆
+                            {{ else if eq .Name "ブログ" }}📝
+                            {{ else if eq .Name "運営者情報" }}👤
+                            {{ else if eq .Name "無料予想" }}🎪
+                            {{ else }}🏇
+                            {{ end }}
+                        </span>
+                        <span class="nav-text">{{ .Name }}</span>
+                    </a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- スクロールアップボタン -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="ページトップに戻る" title="ページトップに戻る">
+        <span class="scroll-arrow">↑</span>
+    </button>
+
+    <!-- フッター -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-main">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem; color: #ffd700;">{{ .Site.Title }}</h3>
+                <p style="margin-bottom: 2rem;">{{ .Site.Params.description }}</p>
+                
+                <div class="disclaimer-section" style="background: rgba(255, 82, 82, 0.1); padding: 1.5rem; border-radius: 10px; border: 2px solid rgba(255, 82, 82, 0.3); margin: 2rem auto; max-width: 600px;">
+                    <div class="disclaimer-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 82, 82, 0.2); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid rgba(255, 82, 82, 0.4); margin-bottom: 1rem;">
+                        <span style="font-size: 1.5rem;">🔞</span>
+                        <span style="font-weight: 600; color: #ff6b6b; font-size: 1.1rem;">20歳以上限定</span>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
+                        競馬は適度に楽しみましょう。予想は参考情報であり、馬券購入は自己責任でお願いします。<br>
+                        無料でご利用いただけるAI予想システムです。
+                    </p>
+                </div>
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+                    <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-top: 0.5rem;">Home Page v2.0 | Last Updated: {{ now.Format "2006.01.02" }}</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" crossorigin="anonymous"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/hero.js"></script>
+    <script src="/js/responsive-tables.js"></script>
+    <script src="/js/section-styles.js"></script>
+    <script src="/js/scroll-to-top.js"></script>
+    <!-- <script src="/js/markdown-fix.js"></script> -->
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>

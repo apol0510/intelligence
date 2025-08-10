@@ -1,0 +1,334 @@
+{{ $title := .Get "title" | default "枠順別成績分析" }}
+{{ $venue := .Get "venue" | default "全場" }}
+{{ $distance := .Get "distance" | default "全距離" }}
+
+<div class="horse-number-analysis">
+  <div class="chart-container">
+    <canvas id="horseNumberChart-{{ .Ordinal }}"></canvas>
+  </div>
+  
+  <div class="chart-stats">
+    <h3>📊 {{ $title }}</h3>
+    <p class="chart-subtitle">{{ $venue }} - {{ $distance }}</p>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">最高勝率</span>
+        <span class="stat-value" id="maxWinRate-{{ .Ordinal }}">--%</span>
+        <span class="stat-detail" id="maxWinHorse-{{ .Ordinal }}">-番</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">最高連対率</span>
+        <span class="stat-value" id="maxPlaceRate-{{ .Ordinal }}">--%</span>
+        <span class="stat-detail" id="maxPlaceHorse-{{ .Ordinal }}">-番</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">最高複勝率</span>
+        <span class="stat-value" id="maxShowRate-{{ .Ordinal }}">--%</span>
+        <span class="stat-detail" id="maxShowHorse-{{ .Ordinal }}">-番</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="data-table">
+    <table class="horse-stats-table">
+      <thead>
+        <tr>
+          <th>馬番</th>
+          <th>1着</th>
+          <th>2着</th>
+          <th>3着</th>
+          <th>着外</th>
+          <th>勝率</th>
+          <th>連対率</th>
+          <th>複勝率</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody-{{ .Ordinal }}">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+.horse-number-analysis {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.chart-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-stats h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.chart-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  color: #ffd700;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.stat-detail {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+.data-table {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.horse-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.horse-stats-table th {
+  background: #f3f4f6;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.horse-stats-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.horse-stats-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.horse-stats-table tbody tr td:first-child {
+  font-weight: bold;
+  color: #667eea;
+}
+
+@media (max-width: 640px) {
+  .horse-number-analysis {
+    padding: 1rem;
+  }
+  
+  .chart-container {
+    padding: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const chartId = 'horseNumberChart-{{ .Ordinal }}';
+  const ctx = document.getElementById(chartId);
+  
+  if (!ctx) return;
+  
+  // サンプルデータ（実際はHugoのデータから取得）
+  const horseData = [
+    { number: 1, first: 12, second: 8, third: 10, outside: 70 },
+    { number: 2, first: 10, second: 12, third: 9, outside: 69 },
+    { number: 3, first: 8, second: 9, third: 12, outside: 71 },
+    { number: 4, first: 11, second: 10, third: 11, outside: 68 },
+    { number: 5, first: 9, second: 11, third: 10, outside: 70 },
+    { number: 6, first: 10, second: 10, third: 8, outside: 72 },
+    { number: 7, first: 13, second: 9, third: 10, outside: 68 },
+    { number: 8, first: 14, second: 11, third: 9, outside: 66 },
+    { number: 9, first: 11, second: 10, third: 11, outside: 68 },
+    { number: 10, first: 9, second: 11, third: 12, outside: 68 },
+    { number: 11, first: 8, second: 9, third: 10, outside: 73 },
+    { number: 12, first: 7, second: 8, third: 9, outside: 76 }
+  ];
+  
+  // 勝率、連対率、複勝率を計算
+  const processedData = horseData.map(horse => {
+    const total = horse.first + horse.second + horse.third + horse.outside;
+    return {
+      ...horse,
+      winRate: ((horse.first / total) * 100).toFixed(1),
+      placeRate: (((horse.first + horse.second) / total) * 100).toFixed(1),
+      showRate: (((horse.first + horse.second + horse.third) / total) * 100).toFixed(1)
+    };
+  });
+  
+  // 最高値を見つける
+  const maxWin = processedData.reduce((max, horse) => 
+    parseFloat(horse.winRate) > parseFloat(max.winRate) ? horse : max
+  );
+  const maxPlace = processedData.reduce((max, horse) => 
+    parseFloat(horse.placeRate) > parseFloat(max.placeRate) ? horse : max
+  );
+  const maxShow = processedData.reduce((max, horse) => 
+    parseFloat(horse.showRate) > parseFloat(max.showRate) ? horse : max
+  );
+  
+  // 統計情報を更新
+  document.getElementById('maxWinRate-{{ .Ordinal }}').textContent = maxWin.winRate + '%';
+  document.getElementById('maxWinHorse-{{ .Ordinal }}').textContent = maxWin.number + '番';
+  document.getElementById('maxPlaceRate-{{ .Ordinal }}').textContent = maxPlace.placeRate + '%';
+  document.getElementById('maxPlaceHorse-{{ .Ordinal }}').textContent = maxPlace.number + '番';
+  document.getElementById('maxShowRate-{{ .Ordinal }}').textContent = maxShow.showRate + '%';
+  document.getElementById('maxShowHorse-{{ .Ordinal }}').textContent = maxShow.number + '番';
+  
+  // テーブルを生成
+  const tableBody = document.getElementById('tableBody-{{ .Ordinal }}');
+  processedData.forEach(horse => {
+    const row = tableBody.insertRow();
+    row.innerHTML = `
+      <td>${horse.number}</td>
+      <td>${horse.first}</td>
+      <td>${horse.second}</td>
+      <td>${horse.third}</td>
+      <td>${horse.outside}</td>
+      <td><strong>${horse.winRate}%</strong></td>
+      <td>${horse.placeRate}%</td>
+      <td>${horse.showRate}%</td>
+    `;
+  });
+  
+  // グラフを作成
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: processedData.map(h => h.number + '番'),
+      datasets: [
+        {
+          label: '勝率',
+          data: processedData.map(h => parseFloat(h.winRate)),
+          backgroundColor: 'rgba(99, 102, 241, 0.8)',
+          borderColor: 'rgba(99, 102, 241, 1)',
+          borderWidth: 2,
+          borderRadius: 4
+        },
+        {
+          label: '連対率',
+          data: processedData.map(h => parseFloat(h.placeRate)),
+          backgroundColor: 'rgba(139, 92, 246, 0.8)',
+          borderColor: 'rgba(139, 92, 246, 1)',
+          borderWidth: 2,
+          borderRadius: 4
+        },
+        {
+          label: '複勝率',
+          data: processedData.map(h => parseFloat(h.showRate)),
+          backgroundColor: 'rgba(236, 72, 153, 0.8)',
+          borderColor: 'rgba(236, 72, 153, 1)',
+          borderWidth: 2,
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: '馬番別成績分析',
+          font: {
+            size: 16,
+            weight: 'bold'
+          }
+        },
+        legend: {
+          position: 'top',
+          labels: {
+            padding: 15,
+            font: {
+              size: 12
+            }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': ' + context.parsed.y.toFixed(1) + '%';
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 40,
+          ticks: {
+            callback: function(value) {
+              return value + '%';
+            }
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      },
+      animation: {
+        duration: 1500,
+        easing: 'easeInOutQuart'
+      }
+    }
+  });
+});
+</script>

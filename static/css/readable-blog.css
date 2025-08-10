@@ -1,0 +1,236 @@
+/* 読みやすいブログデザイン */
+
+.article-content {
+  max-width: none;
+  line-height: 1.8;
+  color: #374151;
+  font-size: 1.05rem;
+}
+
+/* メイン見出し - 控えめで読みやすく */
+.article-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 2.5rem 0 1.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border-left: 5px solid #6366f1;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.article-content h2:hover {
+  transform: translateY(-1px);
+}
+
+/* サブ見出し - シンプルに */
+.article-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 2rem 0 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #8b5cf6;
+}
+
+
+.article-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 1.5rem 0 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(236, 72, 153, 0.05);
+  border-radius: 6px;
+  border-left: 2px solid #ec4899;
+}
+
+/* 最初の段落を特別に */
+.article-content > p:first-of-type {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1f2937;
+  line-height: 1.7;
+  padding: 1.25rem;
+  background: rgba(99, 102, 241, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  margin: 1.5rem 0;
+}
+
+/* 段落の余白を調整 */
+.article-content p {
+  margin: 1rem 0;
+  text-align: justify;
+}
+
+/* リスト - 読みやすく整理 */
+.article-content ul {
+  margin: 1.25rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.article-content li {
+  position: relative;
+  padding: 0.6rem 0 0.6rem 2rem;
+  margin: 0.4rem 0;
+  background: rgba(248, 250, 252, 0.6);
+  border-radius: 6px;
+  border-left: 2px solid #6366f1;
+  transition: background 0.2s ease;
+}
+
+.article-content li:hover {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+.article-content li::before {
+  content: "•";
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6366f1;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* 強調テキスト - 控えめに */
+.article-content strong {
+  font-weight: 700;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.12));
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  border-left: 2px solid #6366f1;
+}
+
+/* テーブルの上下余白を調整 */
+.article-content table {
+  margin: 2rem 0;
+}
+
+/* 読みやすさを向上させる余白調整 */
+.article-content > * + h2 {
+  margin-top: 3rem;
+}
+
+.article-content > * + h3 {
+  margin-top: 2.5rem;
+}
+
+.article-content > * + h4 {
+  margin-top: 2rem;
+}
+
+/* 区切り線 - シンプルに */
+.article-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+  margin: 2.5rem 0;
+  border-radius: 1px;
+}
+
+/* 引用 - 読みやすく */
+.article-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background: rgba(15, 23, 42, 0.03);
+  border-left: 4px solid #64748b;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #475569;
+}
+
+/* コードブロック - 控えめに */
+.article-content code {
+  background: rgba(99, 102, 241, 0.08);
+  color: #5b21b6;
+  padding: 0.15rem 0.3rem;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9em;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .article-content {
+    font-size: 1rem;
+  }
+  
+  .article-content h2 {
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+    margin: 2rem 0 1rem;
+  }
+  
+  .article-content h3 {
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .article-content h4 {
+    font-size: 1.125rem;
+    padding: 0.4rem 0.5rem;
+  }
+  
+  .article-content > p:first-of-type {
+    font-size: 1.05rem;
+    padding: 1rem;
+  }
+  
+  .article-content li {
+    padding: 0.5rem 0 0.5rem 1.75rem;
+  }
+  
+  .article-content li::before {
+    left: 0.6rem;
+  }
+}
+
+/* 視覚的な区切りを改善 */
+.article-content > h2:not(:first-child) {
+  border-top: 1px solid rgba(99, 102, 241, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* 読み飛ばし防止のための工夫 */
+.article-content > h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  margin: 0.5rem 0 0;
+  border-radius: 2px;
+}
+
+/* 文章のグループ化を視覚的に */
+.article-content > p + ul,
+.article-content > ul + p {
+  margin-top: 0.75rem;
+}
+
+/* 重要な情報のハイライト - 控えめに */
+.highlight-info {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.highlight-warning {
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}

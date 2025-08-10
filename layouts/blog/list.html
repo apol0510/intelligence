@@ -1,0 +1,62 @@
+{{ define "main" }}
+<!-- モダンなヒーローセクション -->
+{{ partial "hero-blog.html" . }}
+
+<!-- ブログ記事一覧セクション -->
+<section id="blog-list" class="blog-list-section" role="region" aria-labelledby="blog-list-heading">
+    <div class="blog-container">
+        <h2 id="blog-list-heading">最新記事</h2>
+        
+        <div class="blog-cards-grid">
+            {{ range .Pages }}
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    {{ if .Params.image }}
+                    <div class="blog-card-image">
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    </div>
+                    {{ end }}
+                    <div class="blog-card-meta">
+                        <time class="blog-date">{{ .Date.Format "2006年1月2日" }}</time>
+                        <span class="blog-reading-time">{{ .Params.readingTime | default "5分で読める" }}</span>
+                    </div>
+                </div>
+                
+                <div class="blog-card-content">
+                    <h3 class="blog-card-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    <p class="blog-card-description">{{ .Description | truncate 100 }}</p>
+                    
+                    <div class="blog-card-tags">
+                        {{ range (.Params.categories | default slice) }}
+                        <span class="blog-tag category-tag">{{ . }}</span>
+                        {{ end }}
+                        {{ range first 2 (.Params.tags | default slice) }}
+                        <span class="blog-tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                </div>
+                
+                <div class="blog-card-footer">
+                    <a href="{{ .Permalink }}" class="blog-card-link">記事を読む →</a>
+                </div>
+            </article>
+            {{ else }}
+            <div class="no-posts">
+                <p>まだ記事がありません。</p>
+            </div>
+            {{ end }}
+        </div>
+        
+        <!-- ブログ下部CTA -->
+        <div class="blog-cta">
+            <div class="blog-cta-content">
+                <h3>🎯 最新のAI予想を無料でチェック</h3>
+                <p>ブログで紹介している攻略法を実際のAI予想でお試しください</p>
+                <a href="{{ .Site.Params.prediction }}" target="_blank" class="blog-cta-button">無料予想を見る</a>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

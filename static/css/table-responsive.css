@@ -1,0 +1,189 @@
+/* 表のレスポンシブ対応 - 改善版 */
+
+/* 全ての表に対する基本スタイル */
+.article-content table,
+.article-body table,
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 表のヘッダー */
+.article-content table th,
+.article-body table th,
+main table th {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 表のセル */
+.article-content table td,
+.article-body table td,
+main table td {
+  padding: 0.875rem 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ホバー効果 */
+.article-content table tbody tr:hover,
+.article-body table tbody tr:hover,
+main table tbody tr:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+/* 表のラッパー（横スクロール対応） */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+  position: relative;
+}
+
+/* スクロールバーのスタイル */
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 4px;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  /* 表を含む要素に横スクロールを適用 */
+  .article-content,
+  .article-body {
+    overflow-x: visible;
+  }
+  
+  /* 表自体を横スクロール可能に */
+  .article-content table,
+  .article-body table,
+  main table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    margin: 1rem 0;
+  }
+  
+  /* セルサイズを調整 */
+  .article-content table th,
+  .article-content table td,
+  .article-body table th,
+  .article-body table td,
+  main table th,
+  main table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* スクロールのヒント表示 */
+  .article-content table,
+  .article-body table,
+  main table {
+    position: relative;
+  }
+  
+  /* 右側にグラデーション */
+  .article-content table::after,
+  .article-body table::after,
+  main table::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
+    pointer-events: none;
+  }
+  
+  /* スクロールヒントメッセージ */
+  .table-scroll-hint {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin: 0.5rem 0 1rem;
+    font-style: italic;
+  }
+  
+  .table-scroll-hint::before {
+    content: "← ";
+  }
+  
+  .table-scroll-hint::after {
+    content: " →";
+  }
+}
+
+/* 極小画面対応 */
+@media (max-width: 480px) {
+  .article-content table,
+  .article-body table,
+  main table {
+    font-size: 0.8rem;
+  }
+  
+  .article-content table th,
+  .article-content table td,
+  .article-body table th,
+  .article-body table td,
+  main table th,
+  main table td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* 特定の表クラス */
+.stats-table,
+.horse-stats-table,
+.urawa-stats-table {
+  min-width: 600px;
+}
+
+/* カスタムスクロールメッセージ */
+.table-container {
+  position: relative;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.table-container::before {
+  content: "横にスクロールできます";
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  font-size: 0.75rem;
+  color: #6b7280;
+  background: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .table-container::before {
+    display: block;
+  }
+}

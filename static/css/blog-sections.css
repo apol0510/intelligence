@@ -1,0 +1,314 @@
+/* ブログ記事のモダンセクションデザイン */
+
+.article-content {
+  max-width: none;
+  line-height: 1.8;
+  color: #374151;
+}
+
+/* セクション見出しのスタイリング */
+.article-content h2 {
+  position: relative;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 3rem 0 1.5rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 16px;
+  border-left: 6px solid #6366f1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.article-content h2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-content h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+  border-radius: 16px 16px 0 0;
+}
+
+/* サブセクション見出し */
+.article-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 2.5rem 0 1rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border-radius: 12px;
+  border-left: 4px solid #8b5cf6;
+  position: relative;
+}
+
+.article-content h3::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, transparent);
+  border-radius: 1px;
+}
+
+/* 小見出し */
+.article-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin: 2rem 0 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(236, 72, 153, 0.08);
+  border-radius: 8px;
+  border-left: 3px solid #ec4899;
+}
+
+.article-content h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 1.5rem 0 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 6px;
+  border-left: 2px solid #ffd700;
+}
+
+/* 段落のスタイリング */
+.article-content p {
+  margin: 1.25rem 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.article-content p:first-of-type {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1f2937;
+  line-height: 1.7;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  margin: 2rem 0;
+  position: relative;
+}
+
+.article-content p:first-of-type::before {
+  content: "📖";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: white;
+  padding: 0 8px;
+  font-size: 1.2rem;
+}
+
+/* リストのスタイリング */
+.article-content ul {
+  margin: 1.5rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.article-content li {
+  position: relative;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  margin: 0.5rem 0;
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 8px;
+  border-left: 3px solid #6366f1;
+  transition: all 0.3s ease;
+}
+
+.article-content li:hover {
+  background: rgba(99, 102, 241, 0.05);
+  transform: translateX(4px);
+}
+
+.article-content li::before {
+  content: "→";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6366f1;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* 強調テキスト */
+.article-content strong {
+  font-weight: 700;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.2) 100%);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* コンテンツボックス */
+.content-box {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+}
+
+.content-box.info {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.content-box.warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(217, 119, 6, 0.05) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.content-box.success {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(22, 163, 74, 0.05) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.content-box.danger {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* 引用 */
+.article-content blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.05) 0%, rgba(30, 41, 59, 0.05) 100%);
+  border-left: 6px solid #64748b;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: #475569;
+  position: relative;
+}
+
+.article-content blockquote::before {
+  content: """;
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 3rem;
+  color: #64748b;
+  line-height: 1;
+}
+
+/* コードブロック */
+.article-content pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-content code {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+/* 区切り線 */
+.article-content hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6366f1, #8b5cf6, #ec4899, transparent);
+  margin: 3rem 0;
+  border-radius: 2px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .article-content h2 {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0 1rem;
+  }
+  
+  .article-content h3 {
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .article-content h4 {
+    font-size: 1.125rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .article-content p:first-of-type {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .article-content li {
+    padding: 0.5rem 0 0.5rem 2rem;
+  }
+  
+  .content-box {
+    padding: 1rem;
+  }
+  
+  .article-content blockquote {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+}
+
+/* ダークモード対応（将来の拡張用） */
+@media (prefers-color-scheme: dark) {
+  .article-content {
+    color: #d1d5db;
+  }
+  
+  .article-content h2 {
+    color: #f9fafb;
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+  }
+  
+  .article-content h3 {
+    color: #f3f4f6;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  }
+  
+  .article-content p:first-of-type {
+    color: #e5e7eb;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  }
+  
+  .article-content li {
+    background: rgba(55, 65, 81, 0.3);
+  }
+  
+  .article-content strong {
+    color: #f9fafb;
+  }
+}

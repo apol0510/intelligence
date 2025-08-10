@@ -1,0 +1,284 @@
+{{ define "main" }}
+<!-- ヒーローセクション -->
+<section id="home" class="hero" role="region" aria-label="ヒーローセクション">
+    <div class="hero-content">
+        <h1 class="hero-logo">南関インテリジェンス</h1>
+        <div class="hero-links">
+            <a href="#predictions" class="cta-button">今日の予想を見る</a>
+            <a href="{{ .Site.Params.prediction }}" target="_blank" class="cta-button-secondary">無料予想はこちら</a>
+        </div>
+        <div class="hero-badges">
+            <span class="hero-badge">AI Analytics</span>
+            <span class="hero-badge">Machine Learning</span>
+            <span class="hero-badge">Data Science</span>
+        </div>
+        
+        <!-- メルマガ登録フォーム -->
+        <div class="newsletter-form">
+            <h3>無料メルマガ登録</h3>
+            <p>南関競馬の最新予想情報をお届けします</p>
+            <form action="{{ .Site.Params.newsletter }}" method="post" target="_blank">
+                <input type="hidden" name="charset" value="UTF-8" />
+                <input type="hidden" name="action" value="R3" />
+                <input type="hidden" name="a" value="742" />
+                <input type="hidden" name="f" value="38" />
+                <input type="hidden" name="g" value="17" />
+                <input type="hidden" name="fa_code" value="f3fc06d607f3277d0a2e64be633bee90" />
+                <div class="form-group">
+                    <input type="email" name="mailaddr" placeholder="メールアドレスを入力" required class="email-input" />
+                    <button type="submit" class="newsletter-button">登録する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- 予想セクション -->
+<section id="predictions" class="predictions-section" role="region" aria-labelledby="predictions-heading">
+    <h2 id="predictions-heading">{{ .Params.raceDate }} 今日の予想 - {{ .Params.raceTitle }}</h2>
+    <div class="race-cards">
+        <div class="race-card">
+            <h3>{{ .Params.raceDate }} {{ .Params.venue }} {{ .Params.raceTitle }}</h3>
+            <div class="race-info">
+                <p><strong>開催日:</strong> {{ .Params.raceDate }}</p>
+                <p><strong>距離:</strong> {{ .Params.distance }}</p>
+                <p><strong>発走時刻:</strong> {{ .Params.startTime }}</p>
+                <p><strong>頭数:</strong> {{ .Params.horses }}</p>
+                <p><strong>レース名:</strong> {{ .Params.raceName }}</p>
+            </div>
+            <div class="prediction">
+                <h4>本命予想</h4>
+                <div class="prediction-horses">
+                    {{ range .Params.predictions }}
+                    <div class="horse-prediction">
+                        <span class="position">{{ .mark }}</span>
+                        <span class="horse-name">{{ .name }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="prediction-analysis">
+                    <h5>AI分析理由</h5>
+                    {{ range .Params.analysis }}
+                    <p><strong>{{ .mark }}{{ .name }}:</strong> {{ .reason | safeHTML }}</p>
+                    {{ end }}
+                </div>
+                <div class="race-strategy">
+                    <h5>展開予想</h5>
+                    <p><strong>距離:</strong> {{ .Params.distance }}</p>
+                    <p><strong>展開:</strong> {{ .Params.raceStyle }}</p>
+                    <p><strong>本命筋:</strong> {{ .Params.mainStrategy }}</p>
+                    <p><strong>対抗筋:</strong> {{ .Params.rivalStrategy }}</p>
+                </div>
+                
+                <div class="premium-teaser">
+                    <div class="teaser-content">
+                        <h5><a href="{{ .Site.Params.prediction }}" target="_blank" style="color: white; text-decoration: none;">全レースの無料予想</a></h5>
+                        <p><a href="{{ .Site.Params.prediction }}" target="_blank" style="color: white; text-decoration: none;">AI分析による具体的な買い目を無料公開</a></p>
+                        <a href="{{ .Site.Params.prediction }}" target="_blank" class="premium-btn">✨ 無料予想を見る ✨</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 的中実績セクション -->
+<section id="results" class="results-section" role="region" aria-labelledby="results-heading">
+    <h2 id="results-heading">的中実績</h2>
+    
+    <!-- 統計サマリー -->
+    <div class="results-summary">
+        <div class="summary-card">
+            <h3>総合的中率</h3>
+            <p class="summary-value" id="hit-rate">0%</p>
+        </div>
+        <div class="summary-card">
+            <h3>総合回収率</h3>
+            <p class="summary-value" id="recovery-rate">0%</p>
+        </div>
+        <div class="summary-card">
+            <h3>AI分析</h3>
+            <p class="summary-value" id="ai-usage">0%</p>
+        </div>
+    </div>
+    
+    <!-- 最新実績表示 -->
+    <div class="recent-results">
+        <h3>直近の的中実績</h3>
+        <div id="results-container" class="results-table">
+            <div class="results-header">
+                <div class="header-item">日付</div>
+                <div class="header-item">競馬場</div>
+                <div class="header-item">的中数</div>
+                <div class="header-item">馬券種別</div>
+                <div class="header-item">投資額</div>
+                <div class="header-payout">配当額</div>
+            </div>
+            <div class="results-card-container">
+                {{ range .Params.results }}
+                <div class="result-card" data-date="{{ .date }}">
+                    <div class="result-date" data-label="日付">{{ .displayDate }}</div>
+                    <div class="result-venue" data-label="競馬場">{{ .venue }}</div>
+                    <div class="result-hit-rate" data-label="的中数">{{ .hitRate }}</div>
+                    <div class="result-bet-info" data-label="馬券">{{ .betType }}</div>
+                    <div class="result-investment" data-label="投資額">{{ .investment }}</div>
+                    <div class="result-payout profit" data-label="配当">{{ .payout }}</div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- プロフィールセクション -->
+<section id="profile" class="profile-section" role="region" aria-labelledby="profile-heading">
+    <h2 id="profile-heading">運営者情報</h2>
+    
+    <!-- プロフィール概要カード -->
+    <div class="profile-overview-card">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <div class="avatar-placeholder">
+                    <span class="avatar-icon">👨‍💼</span>
+                </div>
+            </div>
+            <div class="profile-basic-info">
+                <h3 class="profile-name">{{ .Site.Params.author }}</h3>
+                <p class="profile-title">AI予想開発者・データサイエンティスト</p>
+                <p class="profile-age">経験年数: 15年 | 年齢: 49歳</p>
+                <div class="profile-badges">
+                    <span class="modern-badge ai">🤖 AI分析</span>
+                    <span class="modern-badge ml">📊 機械学習</span>
+                    <span class="modern-badge data">📈 データサイエンス</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 専門分野・手法カードグリッド -->
+    <div class="profile-cards-grid">
+        <!-- 専門分野カード -->
+        <div class="profile-detail-card">
+            <div class="card-header">
+                <div class="card-icon">🎯</div>
+                <h4>専門分野</h4>
+            </div>
+            <div class="card-content">
+                <ul class="expertise-list">
+                    <li><span class="list-icon">⚡</span>人工知能（AI）を活用した競馬予想システムの開発</li>
+                    <li><span class="list-icon">📈</span>機械学習による馬券的中率の向上</li>
+                    <li><span class="list-icon">🏇</span>南関東競馬のデータ分析・パターン解析</li>
+                    <li><span class="list-icon">🔧</span>予想アルゴリズムの最適化・継続改善</li>
+                </ul>
+                
+                <div class="expertise-subsection">
+                    <h5 class="subsection-title">🎯 AI分析重点項目</h5>
+                    <ul class="subsection-list">
+                        <li><span class="subsection-icon">📋</span>出走履歴：上昇度分析</li>
+                        <li><span class="subsection-icon">🏃</span>調教履歴：発射パターン分析</li>
+                        <li><span class="subsection-icon">👤</span>騎手相性：適性評価</li>
+                        <li><span class="subsection-icon">🎰</span>枠順影響：有利度判定</li>
+                        <li><span class="subsection-icon">📊</span>展開予想：ペース配分</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-subsection">
+                    <h5 class="subsection-title">🌧️ 馬場状態別戦略</h5>
+                    <ul class="subsection-list">
+                        <li><span class="subsection-icon">☀️</span>良馬場：先行馬重視</li>
+                        <li><span class="subsection-icon">🌤️</span>稍重：差し馬狙い</li>
+                        <li><span class="subsection-icon">☁️</span>重馬場：血統重視</li>
+                        <li><span class="subsection-icon">🌧️</span>不良：蹄形状参考</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 予想手法カード -->
+        <div class="profile-detail-card">
+            <div class="card-header">
+                <div class="card-icon">🛠️</div>
+                <h4>予想手法</h4>
+            </div>
+            <div class="card-content">
+                <div class="method-grid">
+                    <div class="method-item">
+                        <div class="method-icon">🤖</div>
+                        <h5>AI分析</h5>
+                        <p>人工知能による過去データの解析と予想生成</p>
+                    </div>
+                    <div class="method-item">
+                        <div class="method-icon">🧠</div>
+                        <h5>機械学習</h5>
+                        <p>的中率向上を目指した機械学習アルゴリズムの活用</p>
+                    </div>
+                    <div class="method-item">
+                        <div class="method-icon">📊</div>
+                        <h5>データ統合</h5>
+                        <p>南関東競馬の詳細データを総合的に収集・分析</p>
+                    </div>
+                    <div class="method-item">
+                        <div class="method-icon">🔄</div>
+                        <h5>継続改善</h5>
+                        <p>予想精度の継続的な検証とアルゴリズムの最適化</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SNS・コンタクトカード -->
+        <div class="profile-detail-card contact-card">
+            <div class="card-header">
+                <div class="card-icon">📱</div>
+                <h4>SNS・フォロー</h4>
+            </div>
+            <div class="card-content">
+                <div class="social-links">
+                    <a href="{{ .Site.Params.twitter }}" target="_blank" class="social-link twitter">
+                        <div class="social-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </div>
+                        <div class="social-info">
+                            <span class="social-name">Twitter / X</span>
+                            <span class="social-handle">@keiba_haishinjo</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="contact-note">
+                    <p>🔔 最新の予想情報や分析結果を定期配信中！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 実績サマリー -->
+    <div class="profile-achievements">
+        <div class="achievement-item">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-content">
+                <h4>予想精度</h4>
+                <p class="achievement-value">72%</p>
+                <p class="achievement-desc">直近的中率</p>
+            </div>
+        </div>
+        <div class="achievement-item">
+            <div class="achievement-icon">💰</div>
+            <div class="achievement-content">
+                <h4>総合回収率</h4>
+                <p class="achievement-value">125%</p>
+                <p class="achievement-desc">投資効率</p>
+            </div>
+        </div>
+        <div class="achievement-item">
+            <div class="achievement-icon">🎯</div>
+            <div class="achievement-content">
+                <h4>AI分析</h4>
+                <p class="achievement-value">100%</p>
+                <p class="achievement-desc">全予想AI活用</p>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
