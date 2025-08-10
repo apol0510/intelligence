@@ -1,0 +1,127 @@
+/* モバイルレイアウト最適化 - 余白を最小化して表示領域を最大化 */
+
+@media (max-width: 768px) {
+  /* メインコンテンツの余白を最小化 */
+  main {
+    padding: 0.5rem !important;
+  }
+  
+  .article-main {
+    margin: 1rem auto !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  .article-body {
+    padding: 1.5rem 0.75rem !important;
+    margin: 0 !important;
+  }
+  
+  /* 記事コンテンツの余白を最小化 */
+  .article-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* 見出しの余白を調整 */
+  .article-content h2 {
+    margin: 2rem 0 1rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .article-content h3 {
+    margin: 1.5rem 0 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  
+  /* データ分析コンポーネントの余白最小化 */
+  .horse-number-analysis {
+    margin: 1rem -0.75rem !important; /* 親の余白を打ち消して画面端まで使用 */
+    padding: 1rem 0.75rem !important;
+  }
+  
+  .data-table-wrapper {
+    margin: 0 -0.75rem 1rem !important; /* 画面端まで使用 */
+    padding: 1.5rem 0.5rem 1.5rem 1rem !important;
+  }
+  
+  /* 表の表示領域を最大化 */
+  .table-scroll-container {
+    max-width: calc(100vw - 1.5rem) !important; /* 画面幅から最小余白のみ引く */
+    margin: 0 !important;
+    padding-right: 1rem !important;
+  }
+  
+  .data-table {
+    max-width: calc(100vw - 2rem) !important; /* 馬番別成績分析用 */
+    margin: 0 -0.5rem !important; /* さらに余白を削減 */
+    padding-right: 1rem !important;
+  }
+  
+  /* 表の最小幅を画面サイズに合わせて調整 */
+  .urawa-stats-table {
+    min-width: calc(100vw - 2rem) !important; /* 切れないように画面幅に合わせる */
+  }
+  
+  .horse-stats-table {
+    min-width: calc(100vw - 2rem) !important; /* 切れないように画面幅に合わせる */
+  }
+  
+  /* テーブルセルの幅を調整して収まるようにする */
+  .urawa-stats-table th,
+  .urawa-stats-table td {
+    padding: 0.4rem 0.2rem !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap;
+  }
+  
+  .horse-stats-table th,
+  .horse-stats-table td {
+    padding: 0.4rem 0.2rem !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap;
+  }
+  
+  /* 評価列のスタイルを調整 */
+  .evaluation-excellent,
+  .evaluation-good,
+  .evaluation-average,
+  .evaluation-poor {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.65rem !important;
+    border-radius: 6px !important;
+  }
+}
+
+/* 極小画面（iPhone SE等）でさらに最適化 */
+@media (max-width: 375px) {
+  main {
+    padding: 0.25rem !important;
+  }
+  
+  .article-main {
+    padding: 0 0.25rem !important;
+  }
+  
+  .article-body {
+    padding: 1rem 0.5rem !important;
+  }
+  
+  .data-table-wrapper,
+  .horse-number-analysis {
+    margin: 1rem -0.5rem !important;
+    padding: 1rem 0.5rem !important;
+  }
+  
+  .table-scroll-container,
+  .data-table {
+    max-width: calc(100vw - 1rem) !important;
+  }
+  
+  .urawa-stats-table th,
+  .urawa-stats-table td,
+  .horse-stats-table th,
+  .horse-stats-table td {
+    padding: 0.3rem 0.15rem !important;
+    font-size: 0.7rem !important;
+  }
+}

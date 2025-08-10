@@ -166,10 +166,17 @@
   
   .chart-container {
     padding: 1rem;
+    height: 400px !important; /* モバイルでグラフの高さを確保 */
   }
   
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* モバイルでCanvasのサイズを明示的に指定 */
+  canvas {
+    height: 350px !important;
+    width: 100% !important;
   }
 }
 </style>
@@ -284,16 +291,16 @@ document.addEventListener('DOMContentLoaded', function() {
           display: true,
           text: '馬番別成績分析',
           font: {
-            size: 16,
+            size: window.innerWidth <= 640 ? 14 : 16,
             weight: 'bold'
           }
         },
         legend: {
           position: 'top',
           labels: {
-            padding: 15,
+            padding: window.innerWidth <= 640 ? 10 : 15,
             font: {
-              size: 12
+              size: window.innerWidth <= 640 ? 10 : 12
             }
           }
         },

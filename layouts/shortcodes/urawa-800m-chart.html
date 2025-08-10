@@ -358,6 +358,13 @@
 }
 
 @media (max-width: 768px) {
+  /* モバイルでグラフコンテナの高さを増加 */
+  .chart-container {
+    height: 450px !important;
+    padding: 1rem !important;
+    margin: 1rem !important;
+  }
+  
   .chart-header-special {
     flex-direction: column;
     gap: 1rem;
@@ -406,6 +413,12 @@
     padding: 0.6rem 0.4rem;
     font-size: 0.85rem;
     white-space: nowrap;
+  }
+  
+  /* モバイルでCanvasのサイズを明示的に指定 */
+  #urawaChart {
+    height: 400px !important;
+    width: 100% !important;
   }
   
   /* スクロールバーのスタイル */
@@ -581,23 +594,23 @@ window.addEventListener('load', function() {
             display: true,
             text: '🏇 浦和800m 馬番別成績分析',
             font: {
-              size: 20,
+              size: window.innerWidth <= 768 ? 16 : 20,
               weight: 'bold',
               family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
             },
             color: '#1f2937',
             padding: {
               top: 10,
-              bottom: 30
+              bottom: window.innerWidth <= 768 ? 20 : 30
             }
           },
           legend: {
             display: true,
             position: 'top',
             labels: {
-              padding: 25,
+              padding: window.innerWidth <= 768 ? 15 : 25,
               font: {
-                size: 14,
+                size: window.innerWidth <= 768 ? 12 : 14,
                 weight: '600',
                 family: "'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif"
               },
