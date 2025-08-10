@@ -11,10 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initMobileTableSupport() {
-    // 全ての表を取得
-    const tables = document.querySelectorAll('.article-content table, .article-body table, main table');
+    // 全ての表を取得（特別なクラスも含む）
+    const tables = document.querySelectorAll('.article-content table, .article-body table, main table, .urawa-stats-table, .horse-stats-table');
     
     tables.forEach(table => {
+        // 既に専用のラッパーがある場合はスキップ
+        if (table.closest('.data-table-wrapper') && table.classList.contains('urawa-stats-table')) {
+            // data-table-wrapperに直接スクロール機能を追加
+            const wrapper = table.closest('.data-table-wrapper');
+            addTouchSwipeSupport(wrapper);
+            return;
+        }
+        
         // 表をコンテナでラップ
         if (!table.parentElement.classList.contains('mobile-table-wrapper')) {
             const wrapper = document.createElement('div');

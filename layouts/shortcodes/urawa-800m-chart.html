@@ -378,6 +378,53 @@
   
   .data-table-wrapper {
     margin: 0 1rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+  }
+  
+  /* 表の横スクロール対応 */
+  .urawa-stats-table {
+    min-width: 600px;
+    width: auto;
+    margin: 0;
+    display: table;
+  }
+  
+  .urawa-stats-table th,
+  .urawa-stats-table td {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  
+  /* スクロールバーのスタイル */
+  .data-table-wrapper::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .data-table-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+  
+  .data-table-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 4px;
+  }
+  
+  /* スクロールヒント */
+  .data-table-wrapper::after {
+    content: "← スワイプして全体を表示 →";
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background: #f9fafb;
+    border-radius: 0 0 8px 8px;
+    font-style: italic;
   }
   
   .strategy-tips {
