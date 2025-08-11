@@ -3713,6 +3713,47 @@ footer {
     color: rgba(255, 255, 255, 0.95);
 }
 
+/* 結論誘導バナー */
+.quick-access-banner {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.quick-access-banner a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.quick-access-banner a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* 結論説明バナー */
+.conclusion-banner {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    box-shadow: 0 3px 10px rgba(68, 160, 141, 0.3);
+}
+
 /* モバイル対応 */
 @media (max-width: 768px) {
     .popularity-stats {
@@ -3749,5 +3790,22 @@ footer {
         width: 50px !important;
         height: 3px !important;
         margin: 0.8rem auto 0 !important;
+    }
+    
+    .quick-access-banner {
+        padding: 0.8rem 1rem !important;
+        margin: 1rem 0 !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .quick-access-banner a {
+        display: block !important;
+        margin: 0.5rem 0 0 0 !important;
+        padding: 0.6rem 1rem !important;
+    }
+    
+    .conclusion-banner {
+        padding: 1rem !important;
+        font-size: 0.85rem !important;
     }
 }
