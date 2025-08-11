@@ -61,22 +61,55 @@ tags: ["馬番", "枠順", "統計", "データ分析"]
 <div class="summary-points">
 <div class="summary-point">
 <div class="summary-point-title">📊 内枠（1-3番）</div>
-<div class="summary-point-content"><strong>短距離戦では有利</strong>、スタート直後のポジション取りが容易</div>
+<div class="summary-point-content">
+<div class="frame-analysis inner">
+<div class="frame-advantage">✅ <strong>短距離戦で有利</strong></div>
+<div class="frame-feature">スタート直後のポジション取りが容易</div>
+<div class="frame-note">特に1番枠の成績が良好</div>
+</div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">⚖️ 中枠（4-8番）</div>
-<div class="summary-point-content"><strong>最も安定した成績</strong>、展開に左右されにくい</div>
+<div class="summary-point-content">
+<div class="frame-analysis middle">
+<div class="frame-advantage">🎯 <strong>最も安定した成績</strong></div>
+<div class="frame-feature">展開に左右されにくい</div>
+<div class="frame-note">どの距離でもバランス良好</div>
+</div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">🌪️ 外枠（9-12番）</div>
-<div class="summary-point-content"><strong>長距離戦では不利</strong>、騎手の技量が重要</div>
+<div class="summary-point-content">
+<div class="frame-analysis outer">
+<div class="frame-disadvantage">⚠️ <strong>長距離戦では不利</strong></div>
+<div class="frame-feature">騎手の技量が重要</div>
+<div class="frame-note">展開次第で巻き返し可能</div>
+</div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">🎯 的中率向上</div>
-<div class="summary-point-content">競馬場・距離別の枠順特性を活用した<strong>総合的判断が重要</strong></div>
+<div class="summary-point-content">
+<div class="improvement-tips">
+<div class="tip-item">
+<div class="tip-icon">🏟️</div>
+<div class="tip-text">競馬場特性の理解</div>
+</div>
+<div class="tip-item">
+<div class="tip-icon">📏</div>
+<div class="tip-text">距離別枠順データ活用</div>
+</div>
+<div class="tip-item">
+<div class="tip-icon">🧠</div>
+<div class="tip-text"><strong>総合的判断が重要</strong></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

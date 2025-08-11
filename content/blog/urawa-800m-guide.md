@@ -136,32 +136,80 @@ toc: true
 <div class="summary-points">
 <div class="summary-point">
 <div class="summary-point-title">🏆 馬番勝率</div>
-<div class="summary-point-content"><strong>12番（17.1%）</strong>＞<strong>6番（15.3%）</strong>＞<strong>1番（14.1%）</strong>＞<strong>3番（11.3%）</strong></div>
+<div class="summary-point-content">
+<div class="ranking-item rank-1">1位: <strong>12番</strong> <span class="rate">17.1%</span></div>
+<div class="ranking-item rank-2">2位: <strong>6番</strong> <span class="rate">15.3%</span></div>
+<div class="ranking-item rank-3">3位: <strong>1番</strong> <span class="rate">14.1%</span></div>
+<div class="ranking-item rank-4">4位: <strong>3番</strong> <span class="rate">11.3%</span></div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">📊 安定馬番</div>
-<div class="summary-point-content"><strong>3番（3着内率38.1%）</strong>・<strong>2番（34.0%）</strong>・<strong>5番（36.0%）</strong></div>
+<div class="summary-point-content">
+<div class="ranking-item rank-1">1位: <strong>3番</strong> <span class="rate">38.1%</span> <span class="label">3着内率</span></div>
+<div class="ranking-item rank-2">2位: <strong>5番</strong> <span class="rate">36.0%</span> <span class="label">3着内率</span></div>
+<div class="ranking-item rank-3">3位: <strong>2番</strong> <span class="rate">34.0%</span> <span class="label">3着内率</span></div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">🏁 コース特性</div>
-<div class="summary-point-content">2コーナー付近スタートで<strong>出遅れ致命的</strong></div>
+<div class="summary-point-content">
+<div class="feature-item critical">
+<div class="feature-label">スタート位置</div>
+<div class="feature-value">2コーナー付近から発走</div>
+</div>
+<div class="feature-item critical">
+<div class="feature-label">重要ポイント</div>
+<div class="feature-value"><strong>出遅れ致命的</strong></div>
+</div>
+<div class="feature-item">
+<div class="feature-label">直線距離</div>
+<div class="feature-value">最終直線220m</div>
+</div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">🐎 脚質</div>
-<div class="summary-point-content"><strong>逃げ・先行が絶対有利</strong>、差し・追込は困難</div>
+<div class="summary-point-content">
+<div class="style-item advantage">
+<div class="style-icon">🥇</div>
+<div class="style-text"><strong>逃げ・先行</strong><br><span class="sub-text">絶対有利</span></div>
+</div>
+<div class="style-item disadvantage">
+<div class="style-icon">❌</div>
+<div class="style-text"><strong>差し・追込</strong><br><span class="sub-text">困難</span></div>
+</div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">⭐ 人気</div>
-<div class="summary-point-content"><strong>1番人気の信頼度は極めて高い（勝率48.5%）</strong></div>
+<div class="summary-point-content">
+<div class="popularity-item high-trust">
+<div class="popularity-rank">1番人気</div>
+<div class="popularity-stats">
+<div class="stat-item">勝率 <span class="stat-value">48.5%</span></div>
+<div class="stat-item">複勝率 <span class="stat-value">80.6%</span></div>
+</div>
+<div class="trust-badge">極めて高い信頼度</div>
+</div>
+</div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">💎 穴馬</div>
-<div class="summary-point-content"><strong>6番人気以下は期待薄（勝率1.5%）</strong></div>
+<div class="summary-point-content">
+<div class="hole-item low-chance">
+<div class="hole-rank">6番人気以下</div>
+<div class="hole-stats">
+<div class="stat-value low">勝率 1.5%</div>
+<div class="recommendation">期待薄</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
