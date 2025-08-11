@@ -187,10 +187,26 @@ if ('loading' in HTMLImageElement.prototype) {
 // Service Worker登録（PWA対応）
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').then(function(registration) {
-            console.log('ServiceWorker registration successful');
-        }, function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-        });
+        navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+                console.log('ServiceWorker registration successful:', registration.scope);
+                
+                // Update notification
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New update available
+                            console.log('New content is available; please refresh.');
+                        }
+                    });
+                });
+            })
+            .catch(function(err) {
+                console.warn('ServiceWorker registration failed:', err);
+                // Don't throw error - continue without SW
+            });
     });
+} else {
+    console.log('ServiceWorker is not supported in this browser.');
 }
