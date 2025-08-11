@@ -87,10 +87,25 @@
     font-size: 1.05rem !important;
     margin: 0 0 1rem 0 !important;
     padding: 0.75rem !important;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    background: linear-gradient(135deg, #2a5298 0%, #667eea 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
     border-radius: 8px !important;
     text-align: center !important;
-    color: #495057 !important;
+    font-weight: 700 !important;
+    position: relative !important;
+  }
+
+  .prediction h4::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 60px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, #2a5298, #667eea) !important;
   }
 
   /* 馬の予想 */
@@ -113,9 +128,33 @@
   .horse-prediction .position {
     font-size: 1.25rem !important;
     font-weight: bold !important;
-    color: #667eea !important;
+    color: white !important;
     min-width: 50px !important;
     text-align: center !important;
+    padding: 0.5rem !important;
+    border-radius: 8px !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+  }
+
+  /* 順位別背景カラー */
+  .horse-prediction:nth-child(1) .position {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4) !important;
+  }
+
+  .horse-prediction:nth-child(2) .position {
+    background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%) !important;
+    box-shadow: 0 4px 15px rgba(255, 167, 38, 0.4) !important;
+  }
+
+  .horse-prediction:nth-child(3) .position {
+    background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%) !important;
+    box-shadow: 0 4px 15px rgba(66, 165, 245, 0.4) !important;
+  }
+
+  .horse-prediction:nth-child(4) .position {
+    background: linear-gradient(135deg, #66bb6a 0%, #388e3c 100%) !important;
+    box-shadow: 0 4px 15px rgba(102, 187, 106, 0.4) !important;
   }
 
   .horse-prediction .horse-name {
@@ -140,13 +179,19 @@
     background: white !important;
     border-radius: 8px !important;
     text-align: center !important;
-    color: #2d3748 !important;
+    color: #667eea !important;
     font-weight: 700 !important;
     border-left: 4px solid #667eea !important;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-    -webkit-text-fill-color: #2d3748 !important;
+    -webkit-text-fill-color: #667eea !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
+  }
+
+  .prediction-analysis h5::before {
+    content: '🎯' !important;
+    margin-right: 0.5rem !important;
+    filter: hue-rotate(220deg) saturate(1.5) brightness(1.1) !important;
   }
 
   .prediction-analysis p {
@@ -404,6 +449,10 @@
   .horse-prediction .position {
     font-size: 1.1rem !important;
     min-width: 40px !important;
+    color: white !important;
+    padding: 0.4rem !important;
+    border-radius: 6px !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
   }
 
   .horse-prediction .horse-name {
