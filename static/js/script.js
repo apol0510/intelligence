@@ -184,10 +184,18 @@ if ('loading' in HTMLImageElement.prototype) {
     document.body.appendChild(script);
 }
 
-// Service Worker登録（PWA対応）
-if ('serviceWorker' in navigator) {
+// Service Worker登録（PWA対応）- 一時的に無効化
+if ('serviceWorker' in navigator && false) { // 一時的にfalseで無効化
     window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
+        // sw.jsファイルの存在確認を追加
+        fetch('/sw.js', { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    return navigator.serviceWorker.register('/sw.js');
+                } else {
+                    throw new Error('Service Worker file not found');
+                }
+            })
             .then(function(registration) {
                 console.log('ServiceWorker registration successful:', registration.scope);
                 
@@ -203,10 +211,10 @@ if ('serviceWorker' in navigator) {
                 });
             })
             .catch(function(err) {
-                console.warn('ServiceWorker registration failed:', err);
+                console.warn('ServiceWorker registration skipped:', err.message);
                 // Don't throw error - continue without SW
             });
     });
 } else {
-    console.log('ServiceWorker is not supported in this browser.');
+    console.log('ServiceWorker is temporarily disabled or not supported.');
 }
