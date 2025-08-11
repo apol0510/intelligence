@@ -61,7 +61,7 @@ tags: ["馬番", "枠順", "統計", "データ分析"]
 ## これだけ覚えて！枠順攻略の結論
 
 <div class="conclusion-banner">
-📚 <strong>文章を読むのが苦手な方へ</strong><br>
+📚 <strong>お忙しいあなたへ</strong><br>
 このカードだけ見れば、枠順の重要ポイントが2分で分かります！
 </div>
 

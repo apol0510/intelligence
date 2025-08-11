@@ -136,7 +136,7 @@ toc: true
 ## これだけ覚えて！浦和800m攻略の結論
 
 <div class="conclusion-banner">
-📚 <strong>文章を読むのが苦手な方へ</strong><br>
+📚 <strong>お忙しいあなたへ</strong><br>
 このカードだけ見れば、浦和800mの重要ポイントが3分で分かります！
 </div>
 
