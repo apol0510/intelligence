@@ -136,11 +136,14 @@
   .prediction-analysis h5 {
     font-size: 1rem !important;
     margin: 0 0 0.75rem 0 !important;
-    padding: 0.5rem !important;
+    padding: 0.75rem !important;
     background: white !important;
     border-radius: 8px !important;
     text-align: center !important;
-    color: #495057 !important;
+    color: #2d3748 !important;
+    font-weight: 700 !important;
+    border-left: 4px solid #667eea !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
   }
 
   .prediction-analysis p {
