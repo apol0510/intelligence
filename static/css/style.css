@@ -3336,94 +3336,25 @@ footer {
 }
 
 .article-summary h2 {
-    font-size: 2.4rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
     text-align: center;
+    color: #ffd700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 2;
-    color: #ffd700;
-    text-shadow: 
-        0 2px 10px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(255, 215, 0, 0.3),
-        0 1px 3px rgba(0, 0, 0, 0.5);
-    animation: titleGlow 3s ease-in-out infinite alternate;
-    
-    /* フォールバック用グラデーション */
-    background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Firefox用のフォールバック */
-@-moz-document url-prefix() {
-    .article-summary h2 {
-        background: none !important;
-        -webkit-background-clip: unset !important;
-        -webkit-text-fill-color: unset !important;
-        background-clip: unset !important;
-        color: #ffd700 !important;
-    }
-}
-
-/* Safari/WebKit用の追加設定 */
-@supports (-webkit-background-clip: text) {
-    .article-summary h2 {
-        background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-}
-
-@keyframes titleGlow {
-    0% { 
-        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
-        transform: scale(1);
-    }
-    100% { 
-        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
-        transform: scale(1.02);
-    }
-}
-
-.article-summary h2::before {
-    content: '📊';
-    display: inline-block;
-    margin-right: 1rem;
-    font-size: 2rem;
-    animation: iconBounce 2s ease-in-out infinite;
-}
-
-@keyframes iconBounce {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
 }
 
 .article-summary h2::after {
     content: '';
     display: block;
-    width: 120px;
-    height: 6px;
-    background: linear-gradient(90deg, transparent 0%, #ffd700 20%, #ffed4e 50%, #ffd700 80%, transparent 100%);
-    margin: 1.5rem auto 0;
-    border-radius: 3px;
-    box-shadow: 
-        0 3px 15px rgba(255, 215, 0, 0.6),
-        0 0 30px rgba(255, 215, 0, 0.3);
-    animation: underlineGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes underlineGlow {
-    0% { 
-        opacity: 0.8;
-        transform: scaleX(1);
-    }
-    100% { 
-        opacity: 1;
-        transform: scaleX(1.1);
-    }
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700 0%, #ffb300 100%);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
 }
 
 .summary-points {
@@ -3810,34 +3741,13 @@ footer {
     }
     
     .article-summary h2 {
-        font-size: 2rem !important;
-        margin-bottom: 1.5rem !important;
-        color: #ffd700 !important;
-        text-shadow: 
-            0 2px 8px rgba(0, 0, 0, 0.4) !important,
-            0 0 25px rgba(255, 215, 0, 0.3) !important;
-    }
-    
-    .article-summary h2::before {
-        font-size: 1.5rem !important;
-        margin-right: 0.5rem !important;
-        content: '📊' !important;
-        display: inline-block !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
     }
     
     .article-summary h2::after {
-        width: 80px !important;
-        height: 4px !important;
-        margin: 1rem auto 0 !important;
-        background: linear-gradient(90deg, transparent 0%, #ffd700 20%, #ffed4e 50%, #ffd700 80%, transparent 100%) !important;
-        box-shadow: 0 2px 10px rgba(255, 215, 0, 0.5) !important;
-    }
-    
-    /* モバイル用ブラウザ別対応 */
-    @supports not (-webkit-background-clip: text) {
-        .article-summary h2 {
-            background: none !important;
-            color: #ffd700 !important;
-        }
+        width: 50px !important;
+        height: 3px !important;
+        margin: 0.8rem auto 0 !important;
     }
 }
