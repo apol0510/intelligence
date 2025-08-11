@@ -133,7 +133,7 @@ toc: true
 
 <div class="article-summary" id="conclusion">
 
-## 🎯 これだけ覚えて！浦和800m攻略の結論
+## これだけ覚えて！浦和800m攻略の結論
 
 <div class="conclusion-banner">
 📚 <strong>文章を読むのが苦手な方へ</strong><br>

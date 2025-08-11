@@ -3340,10 +3340,18 @@ footer {
     font-weight: 800;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: #ffd700;
+    color: #764ba2;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 2;
+}
+
+/* 🎯アイコンのカラー調整 */
+.article-summary h2::before {
+    content: '🎯';
+    display: inline-block;
+    margin-right: 0.5rem;
+    filter: hue-rotate(240deg) saturate(1.2) brightness(0.9);
 }
 
 .article-summary h2::after {
@@ -3351,10 +3359,10 @@ footer {
     display: block;
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, #ffd700 0%, #ffb300 100%);
+    background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
     margin: 1rem auto 0;
     border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(118, 75, 162, 0.5);
 }
 
 .summary-points {
