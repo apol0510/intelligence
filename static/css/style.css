@@ -3713,6 +3713,11 @@ footer {
     color: rgba(255, 255, 255, 0.95);
 }
 
+/* スムーズスクロール */
+html {
+    scroll-behavior: smooth;
+}
+
 /* 結論誘導バナー */
 .quick-access-banner {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
@@ -3723,6 +3728,12 @@ footer {
     text-align: center;
     box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3); }
+    50% { box-shadow: 0 6px 25px rgba(238, 90, 36, 0.5); }
 }
 
 .quick-access-banner a {
@@ -3734,11 +3745,14 @@ footer {
     border-radius: 20px;
     margin-left: 0.5rem;
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .quick-access-banner a:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
 }
 
 /* 結論説明バナー */
