@@ -3257,14 +3257,17 @@ footer {
     }
     
     .article-summary {
-        padding: 2rem 1.5rem !important;
-        margin: 2rem 1rem !important;
+        padding: 2rem 1rem !important;
+        margin: 2rem 0.5rem !important;
         border-radius: 15px !important;
+        max-width: calc(100vw - 2rem) !important;
+        box-sizing: border-box !important;
     }
     
     .summary-points {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        padding: 0 0.5rem !important;
     }
     
     .summary-point {
@@ -3272,6 +3275,9 @@ footer {
         background: rgba(255, 255, 255, 0.15) !important;
         border-radius: 15px !important;
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        margin: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     
     .summary-point-title {
@@ -3334,16 +3340,41 @@ footer {
     font-weight: 900;
     margin-bottom: 2rem;
     text-align: center;
-    text-shadow: 
-        0 2px 10px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(255, 215, 0, 0.3);
     position: relative;
     z-index: 2;
+    color: #ffd700;
+    text-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.5);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+    
+    /* フォールバック用グラデーション */
     background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* Firefox用のフォールバック */
+@-moz-document url-prefix() {
+    .article-summary h2 {
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: unset !important;
+        background-clip: unset !important;
+        color: #ffd700 !important;
+    }
+}
+
+/* Safari/WebKit用の追加設定 */
+@supports (-webkit-background-clip: text) {
+    .article-summary h2 {
+        background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 @keyframes titleGlow {
@@ -3781,16 +3812,32 @@ footer {
     .article-summary h2 {
         font-size: 2rem !important;
         margin-bottom: 1.5rem !important;
+        color: #ffd700 !important;
+        text-shadow: 
+            0 2px 8px rgba(0, 0, 0, 0.4) !important,
+            0 0 25px rgba(255, 215, 0, 0.3) !important;
     }
     
     .article-summary h2::before {
         font-size: 1.5rem !important;
         margin-right: 0.5rem !important;
+        content: '📊' !important;
+        display: inline-block !important;
     }
     
     .article-summary h2::after {
         width: 80px !important;
         height: 4px !important;
         margin: 1rem auto 0 !important;
+        background: linear-gradient(90deg, transparent 0%, #ffd700 20%, #ffed4e 50%, #ffd700 80%, transparent 100%) !important;
+        box-shadow: 0 2px 10px rgba(255, 215, 0, 0.5) !important;
+    }
+    
+    /* モバイル用ブラウザ別対応 */
+    @supports not (-webkit-background-clip: text) {
+        .article-summary h2 {
+            background: none !important;
+            color: #ffd700 !important;
+        }
     }
 }
