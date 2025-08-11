@@ -137,19 +137,19 @@ toc: true
 <div class="summary-point">
 <div class="summary-point-title">🏆 馬番勝率</div>
 <div class="summary-point-content">
-<div class="ranking-item rank-1">1位: <strong>12番</strong> <span class="rate">17.1%</span></div>
-<div class="ranking-item rank-2">2位: <strong>6番</strong> <span class="rate">15.3%</span></div>
-<div class="ranking-item rank-3">3位: <strong>1番</strong> <span class="rate">14.1%</span></div>
-<div class="ranking-item rank-4">4位: <strong>3番</strong> <span class="rate">11.3%</span></div>
+<div class="ranking-item rank-1">1位: 12番 <span class="rate">17.1%</span></div>
+<div class="ranking-item rank-2">2位: 6番 <span class="rate">15.3%</span></div>
+<div class="ranking-item rank-3">3位: 1番 <span class="rate">14.1%</span></div>
+<div class="ranking-item rank-4">4位: 3番 <span class="rate">11.3%</span></div>
 </div>
 </div>
 
 <div class="summary-point">
 <div class="summary-point-title">📊 安定馬番</div>
 <div class="summary-point-content">
-<div class="ranking-item rank-1">1位: <strong>3番</strong> <span class="rate">38.1%</span> <span class="label">3着内率</span></div>
-<div class="ranking-item rank-2">2位: <strong>5番</strong> <span class="rate">36.0%</span> <span class="label">3着内率</span></div>
-<div class="ranking-item rank-3">3位: <strong>2番</strong> <span class="rate">34.0%</span> <span class="label">3着内率</span></div>
+<div class="ranking-item rank-1">1位: 3番 <span class="rate">38.1%</span> <span class="label">3着内率</span></div>
+<div class="ranking-item rank-2">2位: 5番 <span class="rate">36.0%</span> <span class="label">3着内率</span></div>
+<div class="ranking-item rank-3">3位: 2番 <span class="rate">34.0%</span> <span class="label">3着内率</span></div>
 </div>
 </div>
 
@@ -162,7 +162,7 @@ toc: true
 </div>
 <div class="feature-item critical">
 <div class="feature-label">重要ポイント</div>
-<div class="feature-value"><strong>出遅れ致命的</strong></div>
+<div class="feature-value">出遅れ致命的</div>
 </div>
 <div class="feature-item">
 <div class="feature-label">直線距離</div>
@@ -176,11 +176,11 @@ toc: true
 <div class="summary-point-content">
 <div class="style-item advantage">
 <div class="style-icon">🥇</div>
-<div class="style-text"><strong>逃げ・先行</strong><br><span class="sub-text">絶対有利</span></div>
+<div class="style-text">逃げ・先行<br><span class="sub-text">絶対有利</span></div>
 </div>
 <div class="style-item disadvantage">
 <div class="style-icon">❌</div>
-<div class="style-text"><strong>差し・追込</strong><br><span class="sub-text">困難</span></div>
+<div class="style-text">差し・追込<br><span class="sub-text">困難</span></div>
 </div>
 </div>
 </div>
