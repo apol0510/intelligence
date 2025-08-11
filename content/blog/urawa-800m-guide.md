@@ -127,17 +127,44 @@ toc: true
 - 格下条件でも800mの距離的中率が抜群な馬
 - スタート練習を重点的に行った騎手乗り替わり馬
 
+<div class="article-summary">
+
 ## まとめ
 
 浦和競馬場800mコースは、<strong>「スタート勝負の極短距離戦」</strong>という独特な特徴を持つコースです。出遅れは致命的で、純粋なスピードと瞬発力が最重要となります。
 
-攻略の要点をまとめると：
+<div class="summary-points">
+<div class="summary-point">
+<div class="summary-point-title">🏆 馬番勝率</div>
+<div class="summary-point-content"><strong>12番（17.1%）</strong>＞<strong>6番（15.3%）</strong>＞<strong>1番（14.1%）</strong>＞<strong>3番（11.3%）</strong></div>
+</div>
 
-1. <strong>馬番勝率</strong>：12番（17.1%）＞6番（15.3%）＞1番（14.1%）＞3番（11.3%）
-2. <strong>安定馬番</strong>：3番（3着内率38.1%）・2番（34.0%）・5番（36.0%）
-3. <strong>コース特性</strong>：2コーナー付近スタートで出遅れ致命的
-4. <strong>脚質</strong>：逃げ・先行が絶対有利、差し・追込は困難
-5. <strong>人気</strong>：1番人気の信頼度は極めて高い（勝率48.5%）
-6. <strong>穴馬</strong>：6番人気以下は期待薄（勝率1.5%）
+<div class="summary-point">
+<div class="summary-point-title">📊 安定馬番</div>
+<div class="summary-point-content"><strong>3番（3着内率38.1%）</strong>・<strong>2番（34.0%）</strong>・<strong>5番（36.0%）</strong></div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">🏁 コース特性</div>
+<div class="summary-point-content">2コーナー付近スタートで<strong>出遅れ致命的</strong></div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">🐎 脚質</div>
+<div class="summary-point-content"><strong>逃げ・先行が絶対有利</strong>、差し・追込は困難</div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">⭐ 人気</div>
+<div class="summary-point-content"><strong>1番人気の信頼度は極めて高い（勝率48.5%）</strong></div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">💎 穴馬</div>
+<div class="summary-point-content"><strong>6番人気以下は期待薄（勝率1.5%）</strong></div>
+</div>
+</div>
 
 これらの極短距離戦特有の要素を理解し、NANKAN IntelligenceのAI予想と組み合わせることで、浦和800mでの的中率と回収率の大幅な向上が期待できます。
+
+</div>

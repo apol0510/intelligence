@@ -52,8 +52,34 @@ tags: ["馬番", "枠順", "統計", "データ分析"]
 - 小回りコースで内枠有利
 - 外枠は展開次第
 
+<div class="article-summary">
+
 ## まとめ
 
 馬番別成績分析から、各競馬場・距離によって有利な枠順が異なることが分かりました。この情報を馬券購入の参考にすることで、的中率向上が期待できます。
 
+<div class="summary-points">
+<div class="summary-point">
+<div class="summary-point-title">📊 内枠（1-3番）</div>
+<div class="summary-point-content"><strong>短距離戦では有利</strong>、スタート直後のポジション取りが容易</div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">⚖️ 中枠（4-8番）</div>
+<div class="summary-point-content"><strong>最も安定した成績</strong>、展開に左右されにくい</div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">🌪️ 外枠（9-12番）</div>
+<div class="summary-point-content"><strong>長距離戦では不利</strong>、騎手の技量が重要</div>
+</div>
+
+<div class="summary-point">
+<div class="summary-point-title">🎯 的中率向上</div>
+<div class="summary-point-content">競馬場・距離別の枠順特性を活用した<strong>総合的判断が重要</strong></div>
+</div>
+</div>
+
 ただし、馬の能力や騎手、展開なども重要な要素であることを忘れずに、総合的な判断を心がけましょう。
+
+</div>
