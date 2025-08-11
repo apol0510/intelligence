@@ -184,8 +184,8 @@ if ('loading' in HTMLImageElement.prototype) {
     document.body.appendChild(script);
 }
 
-// Service Worker登録（PWA対応）- 一時的に無効化
-if ('serviceWorker' in navigator && false) { // 一時的にfalseで無効化
+// Service Worker登録（PWA対応）
+if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         // sw.jsファイルの存在確認を追加
         fetch('/sw.js', { method: 'HEAD' })
@@ -216,5 +216,5 @@ if ('serviceWorker' in navigator && false) { // 一時的にfalseで無効化
             });
     });
 } else {
-    console.log('ServiceWorker is temporarily disabled or not supported.');
+    console.log('ServiceWorker is not supported in this browser.');
 }
