@@ -48,6 +48,13 @@ analysis:
 
 # 的中実績
 results:
+  - date: "2025-08-11"
+    displayDate: "8/11"
+    venue: "川崎"
+    hitRate: "9/12"
+    betType: "馬単"
+    investment: "6,000円"
+    payout: "27,970円"
   - date: "2025-08-08"
     displayDate: "8/8"
     venue: "川崎"
@@ -76,13 +83,6 @@ results:
     betType: "馬単"
     investment: "6,000円"
     payout: "36,610円"
-  - date: "2025-08-04"
-    displayDate: "8/4"
-    venue: "川崎"
-    hitRate: "8/12"
-    betType: "馬単"
-    investment: "6,000円"
-    payout: "15,760円"
 ---
 
 NANKAN Intelligence - 南関競馬AI予想プラットフォームへようこそ。
