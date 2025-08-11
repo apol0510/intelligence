@@ -144,6 +144,9 @@
     font-weight: 700 !important;
     border-left: 4px solid #667eea !important;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    -webkit-text-fill-color: #2d3748 !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
   }
 
   .prediction-analysis p {
