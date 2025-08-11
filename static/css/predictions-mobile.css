@@ -1,0 +1,366 @@
+/* 予想セクション専用モバイル最適化CSS */
+/* 展開予想セクションを横幅いっぱいに広げる */
+
+@media (max-width: 768px) {
+  /* 予想セクション全体 */
+  .predictions-section {
+    margin: 0 !important;
+    padding: 2rem 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    border-radius: 0 !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  }
+
+  .predictions-section h2 {
+    font-size: 1.5rem !important;
+    padding: 1rem !important;
+    margin: 0 0 1.5rem 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  /* レースカードコンテナ */
+  .race-cards {
+    padding: 0 0.75rem !important;
+    width: 100% !important;
+  }
+
+  /* 個別のレースカード */
+  .race-card {
+    margin: 0 0 1.5rem 0 !important;
+    padding: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  }
+
+  .race-card h3 {
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    text-align: center !important;
+    border-radius: 0 !important;
+  }
+
+  .race-card h3::after {
+    display: none !important;
+  }
+
+  /* レース情報 */
+  .race-info {
+    padding: 1rem !important;
+    margin: 0 !important;
+    background: #f8f9fa !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .race-info p {
+    margin: 0 !important;
+    padding: 0.5rem !important;
+    background: white !important;
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+  }
+
+  .race-info p strong {
+    display: block !important;
+    font-size: 0.75rem !important;
+    color: #6c757d !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* 予想コンテンツ */
+  .prediction {
+    padding: 1rem !important;
+    background: white !important;
+  }
+
+  .prediction h4 {
+    font-size: 1.05rem !important;
+    margin: 0 0 1rem 0 !important;
+    padding: 0.75rem !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    color: #495057 !important;
+  }
+
+  /* 馬の予想 */
+  .prediction-horses {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    margin: 0 0 1.5rem 0 !important;
+  }
+
+  .horse-prediction {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.75rem !important;
+    background: linear-gradient(90deg, #f8f9fa 0%, white 100%) !important;
+    border-left: 4px solid #667eea !important;
+    border-radius: 0 8px 8px 0 !important;
+  }
+
+  .horse-prediction .position {
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    color: #667eea !important;
+    min-width: 50px !important;
+    text-align: center !important;
+  }
+
+  .horse-prediction .horse-name {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #212529 !important;
+    flex: 1 !important;
+  }
+
+  /* AI分析理由 */
+  .prediction-analysis {
+    margin: 0 0 1.5rem 0 !important;
+    padding: 1rem !important;
+    background: #f0f4f8 !important;
+    border-radius: 12px !important;
+  }
+
+  .prediction-analysis h5 {
+    font-size: 1rem !important;
+    margin: 0 0 0.75rem 0 !important;
+    padding: 0.5rem !important;
+    background: white !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    color: #495057 !important;
+  }
+
+  .prediction-analysis p {
+    margin: 0.5rem 0 !important;
+    padding: 0.75rem !important;
+    background: white !important;
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .prediction-analysis p strong {
+    color: #667eea !important;
+    display: inline-block !important;
+    margin-right: 0.5rem !important;
+  }
+
+  /* 展開予想（レース戦略） */
+  .race-strategy {
+    margin: 0 0 1.5rem 0 !important;
+    padding: 1rem !important;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 179, 0, 0.08) 100%) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    border: 2px solid rgba(255, 179, 0, 0.3) !important;
+  }
+
+  .race-strategy::before {
+    content: '📊 展開予想' !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: white !important;
+    padding: 0 1rem !important;
+    font-size: 0.9rem !important;
+    font-weight: bold !important;
+    color: #e65100 !important;
+  }
+
+  .race-strategy h5 {
+    font-size: 1rem !important;
+    margin: 0.5rem 0 0.75rem 0 !important;
+    text-align: center !important;
+    color: #e65100 !important;
+    -webkit-text-fill-color: #e65100 !important;
+  }
+
+  .race-strategy h5::before {
+    display: none !important;
+  }
+
+  .race-strategy p {
+    margin: 0.5rem 0 !important;
+    padding: 0.75rem !important;
+    background: white !important;
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .race-strategy p:hover {
+    transform: none !important;
+    box-shadow: 0 2px 8px rgba(255, 179, 0, 0.2) !important;
+  }
+
+  .race-strategy p strong {
+    font-size: 0.85rem !important;
+    color: #e65100 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .race-strategy p::before {
+    flex-shrink: 0 !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* プレミアムティーザー */
+  .premium-teaser {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+
+  .teaser-content {
+    padding: 1.5rem 1rem !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    margin: 0 -1rem -1rem -1rem !important;
+    border-radius: 0 0 16px 16px !important;
+  }
+
+  .teaser-content h5 {
+    font-size: 1.1rem !important;
+    margin: 0 0 0.75rem 0 !important;
+    color: white !important;
+  }
+
+  .teaser-content h5 a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  .teaser-content p {
+    font-size: 0.9rem !important;
+    margin: 0 0 1rem 0 !important;
+    color: white !important;
+    opacity: 0.95 !important;
+  }
+
+  .teaser-content p a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  .premium-btn {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.875rem !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    background: white !important;
+    color: #667eea !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .premium-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  }
+}
+
+/* 極小画面対応（375px以下） */
+@media (max-width: 375px) {
+  .predictions-section {
+    padding: 1.5rem 0 !important;
+  }
+
+  .predictions-section h2 {
+    font-size: 1.25rem !important;
+    padding: 0.875rem !important;
+  }
+
+  .race-cards {
+    padding: 0 0.5rem !important;
+  }
+
+  .race-card h3 {
+    font-size: 1rem !important;
+    padding: 0.875rem !important;
+  }
+
+  .race-info {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+
+  .race-info p {
+    padding: 0.625rem !important;
+  }
+
+  .prediction {
+    padding: 0.75rem !important;
+  }
+
+  .horse-prediction {
+    padding: 0.625rem !important;
+  }
+
+  .horse-prediction .position {
+    font-size: 1.1rem !important;
+    min-width: 40px !important;
+  }
+
+  .horse-prediction .horse-name {
+    font-size: 0.9rem !important;
+  }
+
+  .prediction-analysis,
+  .race-strategy {
+    padding: 0.75rem !important;
+  }
+
+  .prediction-analysis p,
+  .race-strategy p {
+    padding: 0.625rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .teaser-content {
+    padding: 1.25rem 0.75rem !important;
+  }
+
+  .premium-btn {
+    padding: 0.75rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* アニメーション無効化（パフォーマンス向上） */
+@media (max-width: 768px) {
+  .race-card,
+  .race-card::before,
+  .horse-prediction,
+  .race-strategy p {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .race-card:hover {
+    transform: none !important;
+  }
+
+  .race-card::before {
+    display: none !important;
+  }
+}
