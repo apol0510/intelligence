@@ -1,0 +1,84 @@
+/* スクロールパフォーマンス最適化 CSS */
+
+/* GPUアクセラレーション用のwill-changeプロパティ */
+header {
+    will-change: transform, opacity;
+}
+
+.hero-content {
+    will-change: transform;
+}
+
+.race-card {
+    will-change: transform;
+}
+
+/* transform3dを使用してGPUアクセラレーションを強制 */
+.scrolled {
+    transform: translateZ(0);
+}
+
+/* スクロール時のアニメーション最適化 */
+.hero {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 不要なアニメーションの無効化 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* スクロールに影響するアニメーションの軽量化 */
+.hero-logo::before,
+.hero-logo::after {
+    animation-play-state: paused;
+}
+
+/* スクロール中のアニメーション停止 */
+.scrolling .hero-logo::before,
+.scrolling .hero-logo::after,
+.scrolling .hero-badge,
+.scrolling .profile-badge {
+    animation-play-state: paused;
+}
+
+/* contain プロパティでレイアウト計算を最適化 */
+.hero-content {
+    contain: layout style paint;
+}
+
+.predictions-section {
+    contain: layout style paint;
+}
+
+.results-section {
+    contain: layout style paint;
+}
+
+/* スムーススクロールの最適化 */
+html {
+    scroll-behavior: smooth;
+}
+
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Chromeブラウザ固有の最適化 */
+@supports (-webkit-appearance: none) {
+    * {
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+}

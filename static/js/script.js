@@ -1,6 +1,9 @@
-// スクロール連動ヘッダー
+// スクロール連動ヘッダー（パフォーマンス最適化）
 let lastScrollTop = 0;
-window.addEventListener('scroll', function() {
+let scrollTimeout;
+let isScrolling = false;
+
+function handleHeaderScroll() {
     const header = document.querySelector('header');
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
@@ -11,7 +14,26 @@ window.addEventListener('scroll', function() {
     }
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
+    isScrolling = false;
+}
+
+// スクロール中アニメーション制御
+let scrollTimer = null;
+function handleScrollStart() {
+    document.body.classList.add('scrolling');
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+        document.body.classList.remove('scrolling');
+    }, 150);
+}
+
+window.addEventListener('scroll', function() {
+    if (!isScrolling) {
+        isScrolling = true;
+        handleScrollStart();
+        requestAnimationFrame(handleHeaderScroll);
+    }
+}, { passive: true });
 
 // モバイルメニューの開閉
 document.addEventListener('DOMContentLoaded', function() {
