@@ -2792,6 +2792,49 @@ footer {
     transform: translateX(5px);
 }
 
+/* 目次内の「これだけ覚えて！」を特別強調 */
+.table-of-contents a[href="#conclusion"] {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: white !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 0.5rem 0;
+    box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    animation: pulseConclusion 2s ease-in-out infinite;
+}
+
+@keyframes pulseConclusion {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 6px 18px rgba(118, 75, 162, 0.4); }
+}
+
+.table-of-contents a[href="#conclusion"]::before {
+    content: '🎯 ';
+    filter: brightness(1.3);
+    margin-right: 0.3rem;
+}
+
+.table-of-contents a[href="#conclusion"]:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(118, 75, 162, 0.5);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 結論リンクの親要素も調整 */
+.table-of-contents li:has(a[href="#conclusion"]) {
+    margin: 1.2rem 0;
+}
+
+.table-of-contents li:has(a[href="#conclusion"])::before {
+    content: '⭐';
+    color: #764ba2;
+    font-size: 1.2rem;
+}
+
 /* 記事本文スタイル */
 .article-content {
     position: relative;
@@ -3829,5 +3872,10 @@ html {
     .conclusion-banner {
         padding: 1rem !important;
         font-size: 0.85rem !important;
+    }
+    
+    .table-of-contents a[href="#conclusion"] {
+        padding: 0.5rem 0.8rem !important;
+        font-size: 0.9rem !important;
     }
 }
