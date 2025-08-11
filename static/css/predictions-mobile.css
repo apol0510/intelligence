@@ -169,28 +169,29 @@
   }
 
   .race-strategy::before {
-    content: '📊 展開予想' !important;
+    content: '📊' !important;
     position: absolute !important;
-    top: -12px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    background: white !important;
-    padding: 0 1rem !important;
-    font-size: 0.9rem !important;
-    font-weight: bold !important;
-    color: #e65100 !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    font-size: 1.5rem !important;
+    opacity: 0.5 !important;
   }
 
   .race-strategy h5 {
-    font-size: 1rem !important;
-    margin: 0.5rem 0 0.75rem 0 !important;
+    font-size: 1.1rem !important;
+    margin: 0 0 1rem 0 !important;
     text-align: center !important;
-    color: #e65100 !important;
-    -webkit-text-fill-color: #e65100 !important;
+    padding: 0.5rem !important;
+    background: linear-gradient(135deg, #e65100 0%, #ff9800 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 700 !important;
   }
 
   .race-strategy h5::before {
-    display: none !important;
+    content: '🏁 ' !important;
+    font-size: 1rem !important;
   }
 
   .race-strategy p {
@@ -223,23 +224,70 @@
 
   /* プレミアムティーザー */
   .premium-teaser {
-    margin: 0 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    background: none !important;
+    margin: 2rem 0 0 !important;
+    padding: 1.5rem !important;
+    border-radius: 15px !important;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.9) 50%, rgba(255, 107, 107, 0.85) 100%) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid rgba(255, 215, 0, 0.6) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    box-shadow: 
+      0 20px 40px rgba(102, 126, 234, 0.3),
+      0 5px 15px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .premium-teaser::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -2px !important;
+    left: -2px !important;
+    right: -2px !important;
+    bottom: -2px !important;
+    background: linear-gradient(45deg, #ffd700, #ff6b6b, #667eea, #ffd700) !important;
+    background-size: 400% 400% !important;
+    border-radius: 15px !important;
+    z-index: -1 !important;
+    animation: rainbowBorder 4s ease-in-out infinite !important;
+  }
+
+  @keyframes rainbowBorder {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 
   .teaser-content {
-    padding: 1.5rem 1rem !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-    margin: 0 -1rem -1rem -1rem !important;
-    border-radius: 0 0 16px 16px !important;
+    padding: 0 !important;
+    background: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .teaser-content h5 {
-    font-size: 1.1rem !important;
+    font-size: 1.3rem !important;
     margin: 0 0 0.75rem 0 !important;
     color: white !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .teaser-content h5::before {
+    content: '⭐' !important;
+    font-size: 1.2rem !important;
+    animation: starTwinkle 2s ease-in-out infinite !important;
+  }
+
+  @keyframes starTwinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
   }
 
   .teaser-content h5 a {
@@ -250,32 +298,63 @@
   .teaser-content p {
     font-size: 0.9rem !important;
     margin: 0 0 1rem 0 !important;
-    color: white !important;
-    opacity: 0.95 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    line-height: 1.6 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
   }
 
   .teaser-content p a {
-    color: white !important;
+    color: rgba(255, 255, 255, 0.95) !important;
     text-decoration: none !important;
   }
 
   .premium-btn {
-    display: block !important;
+    display: inline-block !important;
     width: 100% !important;
-    padding: 0.875rem !important;
+    padding: 1rem 2rem !important;
     font-size: 1rem !important;
     text-align: center !important;
-    background: white !important;
-    color: #667eea !important;
-    border-radius: 8px !important;
-    font-weight: bold !important;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffb300 100%) !important;
+    color: #1a1a2e !important;
+    border: 3px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 50px !important;
+    font-weight: 900 !important;
     text-decoration: none !important;
-    transition: all 0.3s ease !important;
+    box-shadow: 
+      0 10px 25px rgba(255, 215, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.4s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+  }
+
+  .premium-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent) !important;
+    transition: left 0.5s !important;
   }
 
   .premium-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    transform: scale(1.05) translateY(-2px) !important;
+    box-shadow: 
+      0 15px 40px rgba(255, 215, 0, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    color: #000 !important;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8) !important;
+  }
+
+  .premium-btn:hover::before {
+    left: 100% !important;
+  }
+
+  .premium-btn:active {
+    transform: scale(1.02) translateY(0px) !important;
   }
 }
 
