@@ -28,21 +28,12 @@ menu:
     - name: 'ホーム'
       url: '/'
       weight: 1
-    - name: '今日の予想'
-      url: '#predictions'
-      weight: 2
-    - name: '的中実績'
-      url: '#results'
-      weight: 3
     - name: 'ブログ'
       url: '/blog'
-      weight: 4
-    - name: '運営者情報'
-      url: '#profile'
-      weight: 5
+      weight: 2
     - name: '無料予想'
       url: 'https://apolon.keibanahibi.com/index.php?nankanyosou'
-      weight: 6
+      weight: 3
 
 outputs:
   home:
